@@ -332,7 +332,7 @@ clean:
 	-cd SDL-1.2.15; make distclean; rm -f include/SDL_config.h sdl.pc;
 	-cd SDL_image-1.2.5; make distclean
 	-cd SDL_ttf-2.0.11; make distclean
-	-cd SDL_gfx-2.0.15; make distclean
+	-cd SDL_gfx-2.0.26; make distclean
 	-cd lua-5.1.5; make clean
 	-cd luasocket-2.0.2; make clean PLATFORM=linux
 	-cd slnunicode-1.1; make clean PLATFORM=linux
