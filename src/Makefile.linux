@@ -179,7 +179,7 @@ luafilesystem:
 	cd luafilesystem-1.2 && make install PREFIX=${PREFIX} PLATFORM=linux
 
 luaprofiler:
-	cd luaprofiler-2.0.2 && make -f Makefile.linux install
+	cd luaprofiler-2.0.2 && LD="gcc -shared" make -f Makefile.linux install
 
 .PHONY: tolua++
 tolua++: lua
