@@ -121,11 +121,11 @@ sdl-ttf: SDL_ttf-2.0.11/Makefile
 	cd SDL_ttf-2.0.11; make && make install
 
 # sdl_gfx
-SDL_gfx-2.0.15/Makefile:
-	cd SDL_gfx-2.0.15; ./configure ${ENABLE_PROFILING} ${USE_MMX} --host=${HOST} --target=${TARGET} --prefix=${PREFIX}
+SDL_gfx-2.0.26/Makefile:
+	cd SDL_gfx-2.0.26; ./configure ${ENABLE_PROFILING} ${USE_MMX} --host=${HOST} --target=${TARGET} --prefix=${PREFIX}
 
-sdl-gfx: SDL_gfx-2.0.15/Makefile
-	cd SDL_gfx-2.0.15; make && make install
+sdl-gfx: SDL_gfx-2.0.26/Makefile
+	cd SDL_gfx-2.0.26; make && make install
 
 
 #####
