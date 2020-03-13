@@ -1162,7 +1162,7 @@ static int process_event(lua_State *L, SDL_Event *event) {
 
 		/* show mouse cursor */
 		if (pointer_enable && pointer_timeout == 0) {
-			SDL_ShowCursor(SDL_ENABLE);
+			SDL_ShowCursor(SDL_DISABLE);
 		}
 		pointer_timeout = now + POINTER_TIMEOUT;
 
