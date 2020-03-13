@@ -45,7 +45,8 @@ module(..., Framework.constants)
 oo.class(_M, Applet)
 
 local _defaultSkinNameForType = {
-		["touch"] = "WVGAsmallSkin",
+		["desktop"] = "WVGAsmallSkin",
+		["touch"] = "WQVGAsmallSkin",
 		["remote"] = "WQVGAlargeSkin",
 }
 

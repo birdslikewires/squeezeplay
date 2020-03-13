@@ -15,6 +15,11 @@ export LD_INCLUDE_PATH=$INC_DIR:$LD_INCLUDE_PATH
 # export PATH=$PATH:$INSTALL_DIR/bin:/usr/sbin
 export PATH=$PATH:$INSTALL_DIR/bin
 
+export DISPLAY=:0.0
+export SDL_AUDIODRIVER=alsa
+export SDL_VIDEO_WINDOW_POS=0,0
+export SDL_VIDEO_ALLOW_SCREENSAVER=1
+
 # Portaudio
 #
 # export USEPADEVICE=null
