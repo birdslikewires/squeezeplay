@@ -38,6 +38,7 @@ function defaultSettings(meta)
 		JogglerSkin = "pcp_black.png",
 		WQVGAsmallSkin = "fab4_encore.png",
 		WQVGAlargeSkin = "fab4_encore.png",
+		WVGAsmallSkin = "pcp_encore.png",
 		FullscreenSkin = "jive_black.png",
 		QVGAportraitSkin  = "jive_encore.png",
 		QVGAlandscapeSkin = _getQVGAlandscapeSkinWallpaper(meta),
