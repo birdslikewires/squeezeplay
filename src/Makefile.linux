@@ -203,7 +203,7 @@ portaudio: portaudio_v19_1360/Makefile
 
 # fdkaac
 fdk-aac-2.0.1/Makefile:
-	cd fdk-aac-2.0.1; ./configure ${ENABLE_PROFILING} --prefix=${PREFIX}
+	cd fdk-aac-2.0.1; ./configure ${ENABLE_PROFILING} --prefix=${PREFIX}; autoreconf -f -i
 
 fdkaac: fdk-aac-2.0.1/Makefile
 	cd fdk-aac-2.0.1; make; make install
