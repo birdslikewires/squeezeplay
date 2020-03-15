@@ -202,11 +202,11 @@ portaudio: portaudio_v19_1360/Makefile
 	cd portaudio_v19_1360; make && make install
 
 # fdkaac
-fdk-aac-2.0.0/Makefile:
-	cd fdk-aac-2.0.0; ./configure ${ENABLE_PROFILING} --prefix=${PREFIX}
+fdk-aac-2.0.1/Makefile:
+	cd fdk-aac-2.0.1; ./configure ${ENABLE_PROFILING} --prefix=${PREFIX}
 
-fdkaac: fdk-aac-2.0.0/Makefile
-	cd fdk-aac-2.0.0; make; make install
+fdkaac: fdk-aac-2.0.1/Makefile
+	cd fdk-aac-2.0.1; make; make install
 
 # libogg
 libogg-1.2.2/Makefile:
