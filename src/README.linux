@@ -1,25 +1,34 @@
 Building on Linux
 =================
 
-This was tested using Ubuntu 6.10, using gcc 4.1.2
+This was tested using Debian 10, using gcc 8.3.0
 
 To build in ../../build/linux:
-$ make -f Makefile.linux
+
+`make -f Makefile.linux`
 
 ## Requirements:
 
-You will need to install the following packages using apt-get (for example "sudo apt-get install build-essential").
+You will need to install the following packages:
 
 * build-essential
+* git
 * flex
 * bison
-* subversion
 * automake
 * libtool
-* libpng12-dev
-* libjpeg62-dev
+* libpng-dev
+* libjpeg-dev
 * libexpat1-dev
-* libreadline5-dev
-* xorg-dev
+* libreadline-dev
+* libncurses5-dev
 * libasound2-dev
+* scons
+* xorg-dev
+* zlib1g-dev
 
+Or in other words:
+
+`apt install build-essential git flex bison automake libtool libpng-dev libjpeg-dev libexpat1-dev libreadline-dev libncurses5-dev libasound2-dev scons xorg-dev zlib1g-dev`
+
+Good luck.
