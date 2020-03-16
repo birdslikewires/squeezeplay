@@ -20,7 +20,8 @@ Current submodules are:
 With a following wind and a lucky charm you should be able to compile it with this:
 
 ```
-make -C squeezeplay/src -f Makefile.linux
+cd squeezeplay/src
+make -f Makefile.linux
 ```
 
 Good luck.
