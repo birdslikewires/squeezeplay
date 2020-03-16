@@ -14,6 +14,7 @@ git -C squeezeplay submodule update --init --recursive
 Current submodules are:
 
 * [portaudio](https://app.assembla.com/spaces/portaudio/git/source)
+* [zlib](https://github.com/madler/zlib)
 
 ## Compiling
 
