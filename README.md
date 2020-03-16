@@ -1,6 +1,6 @@
 # SqueezePlay
 
-SqueezePlay software optimised for OpenFrame devices.
+SqueezePlay software for OpenFrame devices.
 
 ## Cloning
 
