@@ -19,6 +19,7 @@ export DISPLAY=:0.0
 export SDL_AUDIODRIVER=alsa
 export SDL_VIDEO_WINDOW_POS=0,0
 export SDL_VIDEO_ALLOW_SCREENSAVER=1
+export KMP_DUPLICATE_LIB_OK=TRUE
 
 # Portaudio
 #
