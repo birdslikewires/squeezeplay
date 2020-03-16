@@ -30,4 +30,4 @@ Good luck.
 
 I'm not maintaining this repo with an eye on other platforms.
 
-It is very likely that I'll break things that are unrelated to OpenFrame devices, which are utilising the 'desktop' version of SqueezePlay. If I do manage to something useful feel free to pull it to your own repo!
+It is very likely that I'll break things that are unrelated to OpenFrame devices, which are utilising the 'desktop' version of SqueezePlay. If I do manage to something useful feel free to pull it into a repo of your own!
