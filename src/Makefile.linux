@@ -64,11 +64,11 @@ generated:
 	mkdir -p generated
 
 # zlib
-zlib-1.2.7/Makefile:
-	cd zlib-1.2.7; ./configure --shared --prefix=${PREFIX}
+zlib/Makefile:
+	cd zlib; ./configure --shared --prefix=${PREFIX}
 
-zlib: zlib-1.2.7/Makefile
-	cd zlib-1.2.7; make; make prefix=${PREFIX} install
+zlib: zlib/Makefile
+	cd zlib; make; make prefix=${PREFIX} install
 	-rm -f ${PREFIX}/lib/libz.a
 # expat
 expat-2.0.1/Makefile:
@@ -324,7 +324,7 @@ clean_generated:
 
 .PHONY: clean
 clean:
-	-cd zlib-1.2.7; make distclean; rm -f Makefile
+	-cd zlib; make distclean; rm -f Makefile
 	-cd expat-2.0.1; make distclean
 	-cd freetype-2.4.2; make distclean
 	-cd libpng-1.2.59; make distclean
