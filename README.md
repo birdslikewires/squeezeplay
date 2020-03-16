@@ -2,17 +2,25 @@
 
 SqueezePlay software optimised for OpenFrame devices.
 
-## Cloning and Compiling
+## Cloning
 
 This project contains submodules from other Git repositories, so you need to initialise and update those after cloning this.
 
 ```
 git clone https://github.com/andydvsn/squeezeplay
-cd squeezeplay
-git submodule init
-git submodule update
+git -C squeezeplay submodule update --init --recursive
 ```
 
 Current submodules are:
 
 * [portaudio](https://app.assembla.com/spaces/portaudio/git/source)
+
+## Compiling
+
+With a following wind and a lucky charm you should be able to compile it with this:
+
+```
+make -C squeezeplay/src -f Makefile.linux
+```
+
+Good luck.
