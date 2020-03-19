@@ -46,6 +46,7 @@ oo.class(_M, Applet)
 
 local _defaultSkinNameForType = {
 		["desktop"] = "WVGAsmallSkin",
+		["squeezeplay"] = "WVGAsmallSkin",
 		["touch"] = "WQVGAsmallSkin",
 		["remote"] = "WQVGAlargeSkin",
 }
