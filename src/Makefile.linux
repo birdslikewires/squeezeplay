@@ -345,7 +345,7 @@ clean:
 	-cd luamd5; make MYNAME=md5 clean
 	-cd tolua++-1.0.92; scons -c; rm .sconsign.dblite; rm src/lib/libtolua++.so
 	-cd portaudio; make distclean; rmdir src/os/mac_osx
-	-cd fdk-aac-2.0.0; make distclean
+	-cd fdk-aac-2.0.1; make distclean
 	-cd libogg-1.3.4; make distclean
 	-cd Tremor; make distclean
 	-cd flac-1.3.3; make distclean; rm src/libFLAC++/flac++.pc; find . -type f -name Makefile -exec rm {} \; ; find . -type d -name '.deps' -exec rm -rf {} \;
