@@ -107,11 +107,11 @@ sdl: SDL-1.2.15/Makefile
 	cd SDL-1.2.15; make && make install
 
 # sdl_image (requires jpeg tiff png)
-SDL_image-1.2.5/Makefile:
-	cd SDL_image-1.2.5; SDL_CONFIG=${PREFIX}/bin/sdl-config ./configure --disable-tif  --host=${HOST} --target=${TARGET} ${ENABLE_PROFILING} --prefix=${PREFIX} ${LIBPNG} ${LIBJPEG}
+SDL_image-1.2.7/Makefile:
+	cd SDL_image-1.2.7; SDL_CONFIG=${PREFIX}/bin/sdl-config ./configure --disable-tif  --host=${HOST} --target=${TARGET} ${ENABLE_PROFILING} --prefix=${PREFIX} ${LIBPNG} ${LIBJPEG}
 
-sdl-image: SDL_image-1.2.5/Makefile
-	cd SDL_image-1.2.5; make && make install
+sdl-image: SDL_image-1.2.7/Makefile
+	cd SDL_image-1.2.7; make && make install
 
 # sdl_ttf
 SDL_ttf-2.0.11/Makefile:
@@ -330,7 +330,7 @@ clean:
 	-cd libpng-1.2.59; make distclean
 	-cd jpeg-9c; make distclean
 	-cd SDL-1.2.15; make distclean; rm -f include/SDL_config.h sdl.pc;
-	-cd SDL_image-1.2.5; make distclean
+	-cd SDL_image-1.2.7; make distclean
 	-cd SDL_ttf-2.0.11; make distclean
 	-cd SDL_gfx-2.0.26; make distclean
 	-cd lua-5.1.5; make clean
