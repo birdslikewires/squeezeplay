@@ -4,3 +4,6 @@
 [submodule "src/zlib"]
 	path = src/zlib
 	url = https://github.com/andydvsn/zlib
+[submodule "src/freetype2"]
+	path = src/freetype2
+	url = https://github.com/andydvsn/freetype2
