@@ -78,11 +78,11 @@ expat: expat-2.0.1/Makefile
 	cd expat-2.0.1; make; make prefix=${PREFIX} install
 
 # freetype
-freetype2/config.mk:
-	cd freetype2; ./configure ${ENABLE_PROFILING} --host=${HOST} --target=${TARGET} --prefix=${PREFIX}
+freetype-2.4.2/config.mk:
+	cd freetype-2.4.2; ./configure ${ENABLE_PROFILING} --host=${HOST} --target=${TARGET} --prefix=${PREFIX}
 
-freetype: freetype2/config.mk
-	cd freetype2; make; make install
+freetype: freetype-2.4.2/config.mk
+	cd freetype-2.4.2; make; make install
 
 # png
 libpng-1.2.59/Makefile:
@@ -326,7 +326,7 @@ clean_generated:
 clean:
 	-cd zlib; make distclean; rm -f Makefile
 	-cd expat-2.0.1; make distclean
-	-cd freetype2; make distclean
+	-cd freetype-2.4.2; make distclean
 	-cd libpng-1.2.59; make distclean
 	-cd jpeg-9d; make distclean
 	-cd SDL-1.2.15; make distclean; rm -f include/SDL_config.h sdl.pc;
