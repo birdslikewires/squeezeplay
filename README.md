@@ -28,6 +28,13 @@ Current submodules are:
 * [portaudio](https://app.assembla.com/spaces/portaudio/git/source)
 * [zlib](https://github.com/madler/zlib)
 
+These are links to the original projects, which are mirrored here for my own peace of mind. This is done by cloning the original repo, creating an empty one of matching name here on GitHub, using:
+
+```
+git remote set-url origin https://github.com/your/repository
+```
+Then pushing the repo.
+
 ## Compiling
 
 With a following wind and a lucky charm you should be able to compile it with this:
