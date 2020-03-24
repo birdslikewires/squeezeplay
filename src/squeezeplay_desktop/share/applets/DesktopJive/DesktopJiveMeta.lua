@@ -121,7 +121,7 @@ function registerApplet(meta)
 	appletManager:addDefaultSetting("Playback", "enableAudio", 1)
 
 	if jiveMain:getDefaultSkin() == 'QVGAportraitSkin' then
-		jiveMain:setDefaultSkin("WQVGAsmallSkin")
+		jiveMain:setDefaultSkin("WVGAsmallSkin")
 	end
 
 	Framework:addActionListener("soft_reset", self, _softResetAction, true)
