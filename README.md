@@ -8,7 +8,19 @@ This project contains submodules from other Git repositories, so you need to ini
 
 ```
 git clone https://github.com/andydvsn/squeezeplay
-git -C squeezeplay submodule update --init --recursive
+git -C squeezeplay submodule update --init
+```
+
+This checks out the versions last verified to work with this build. To update to whatever the very latest commit happens to be for those submodules, either `cd` into the submodule and:
+
+```
+git checkout master
+git pull
+```
+Or to just bltz everything with the latest code:
+
+```
+git -C squeezeplay submodule foreach git pull origin master
 ```
 
 Current submodules are:
