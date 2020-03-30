@@ -76,4 +76,3 @@ fi
 
 cd $INSTALL_DIR/bin
 ./jive
-

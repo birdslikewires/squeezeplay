@@ -17,6 +17,7 @@ See L<jive.AppletMeta> for a description of standard applet meta functions.
 
 
 local oo            = require("loop.simple")
+local os            = require("os")
 
 local AppletMeta    = require("jive.AppletMeta")
 
@@ -51,7 +52,7 @@ function configureApplet(self)
 		callback = function() 
 			-- disconnect from Player/SqueezeCenter
 			appletManager:callService("disconnectPlayer")
-
+			os.execute('openframe_power.sh quit')
 			Framework:quit()
 
 			-- return (EVENT_CONSUME | EVENT_QUIT)
