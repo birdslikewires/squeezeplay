@@ -1,7 +1,8 @@
 ################################################################################
-# Squeezeplay makefile for Linux
+# Squeezeplay makefile for OpenFrame devices (based on Makefile.linux)
 # Copyright 2007 Logitech
 # Copyright 2018 Ralph Irving
+# Whatever 2020 Andrew Davison
 ################################################################################
 #
 # Additional packages required to build
@@ -297,7 +298,13 @@ freefont:
 
 .PHONY: squeezeplay-strip
 squeezeplay-strip:
-	rm -rf squeezeplay_desktop/share/applets/Quit
+	rm -rvf squeezeplay_contrib/share/applets/Bounce
+	rm -rvf squeezeplay/doc/html/applets/Bounce
+	rm -rvf squeezeplay/share/applets/QVGA*
+	#rm -rvf squeezeplay/share/applets/Test*
+	rm -rvf squeezeplay/share/applets/WQVGA*
+	rm -rvf squeezeplay/share/applets/
+	rm -rvf squeezeplay_desktop/share/applets/Quit
 
 # 
 # This builds the .tarball. It's called by 'all' so no need to run it manually
