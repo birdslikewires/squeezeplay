@@ -94,8 +94,6 @@ function menu(self, menuItem)
 		},
 		
 	})
-		
-	end
 	
 	self.timer = Timer(10000,
 		function()
