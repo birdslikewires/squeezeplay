@@ -192,7 +192,7 @@ tolua++: lua
 #
 
 .PHONY: app portaudio fdkaac libogg flac libmad tremor squeezeplay squeezeplay_desktop squeezeplay_contrib squeezeplay_private freefont freefont-debian axtls rtmp
-app: portaudio fdkaac libogg flac libmad tremor ${SPPRIVATE_TARGETS} squeezeplay squeezeplay_desktop squeezeplay_contrib freefont rtmp squeezeplay-tgz 
+app: portaudio fdkaac libogg flac libmad tremor ${SPPRIVATE_TARGETS} squeezeplay squeezeplay_desktop squeezeplay_contrib freefont rtmp squeezeplay-strip squeezeplay-tgz 
 
 # portaudio
 portaudio/Makefile:
@@ -294,6 +294,10 @@ freefont:
 	mkdir -p ${PREFIX}/share/jive/fonts
 	cp freefont-20090104/FreeSans.ttf ${PREFIX}/share/jive/fonts
 	cp freefont-20090104/FreeSansBold.ttf ${PREFIX}/share/jive/fonts
+
+.PHONY: squeezeplay-strip
+squeezeplay-strip:
+	rm -rf squeezeplay_desktop/share/applets/Quit
 
 # 
 # This builds the .tarball. It's called by 'all' so no need to run it manually
