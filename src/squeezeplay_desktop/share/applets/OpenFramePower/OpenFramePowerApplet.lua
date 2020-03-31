@@ -123,10 +123,10 @@ end
 
 =head1 LICENSE
 
-Created by Andrew Davison
-birdslikewires.net
+Created by Andy Davison
+birdslikewires.co.uk
 
-This file is licensed under BSD. Please see the LICENSE file for details.
+This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
 
 =cut
 --]]
