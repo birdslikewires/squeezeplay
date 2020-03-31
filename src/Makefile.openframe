@@ -21,7 +21,7 @@
 SRC_DIR = $(realpath $(shell pwd))
 BASE_DIR = $(dir ${SRC_DIR})
 
-export BUILD_TOP=$(BASE_DIR)build/linux
+export BUILD_TOP=$(BASE_DIR)build/openframe
 
 DESTDIR=${BUILD_TOP}
 export PREFIX=${DESTDIR}
@@ -298,13 +298,11 @@ freefont:
 
 .PHONY: squeezeplay-strip
 squeezeplay-strip:
-	rm -rvf squeezeplay_contrib/share/applets/Bounce
-	rm -rvf squeezeplay/doc/html/applets/Bounce
-	rm -rvf squeezeplay/share/applets/QVGA*
-	#rm -rvf squeezeplay/share/applets/Test*
-	rm -rvf squeezeplay/share/applets/WQVGA*
-	rm -rvf squeezeplay/share/applets/
-	rm -rvf squeezeplay_desktop/share/applets/Quit
+	rm -rvf ${BUILD_TOP}/share/jive/applets/Bounce
+	rm -rvf ${BUILD_TOP}/share/jive/applets/QVGA*
+	#rm -rvf ${BUILD_TOP}/share/jive/applets/Test*
+	rm -rvf ${BUILD_TOP}/share/jive/applets/WQVGA*
+	rm -rvf ${BUILD_TOP}/share/jive/applets/Quit
 
 # 
 # This builds the .tarball. It's called by 'all' so no need to run it manually
