@@ -96,7 +96,7 @@ DONE_HELP
 	CS	Nyní můžete používat SqueezePlay pro přístup k vaší hudbě. Chcete-li pokračovat, stiskněte pravou kurzorovou šipku.
 	DA	Nu kan du bruge SqueezePlay til at lytte til al din musik. Tryk på knappen med højrepilen for at fortsætte.
 	DE	Sie können nun mit SqueezePlay auf Ihre gesamte Musiksammlung zugreifen. Drücken Sie zum Fortfahren die rechte Pfeiltaste.
-	EN	Now you can use SqueezePlay to access all your music. Press the right arrow key to continue.
+	EN	Now you can use SqueezePlay to access all your music.
 	ES	Ya puede usar SqueezePlay para acceder a toda su música. Pulse la flecha derecha para continuar.
 	FI	Nyt voit ohjata kaikkia musiikkitiedostojasi SqueezePlayllä. Jatka painamalla oikeaa nuolta.
 	FR	Vous pouvez maintenant utiliser SqueezePlay pour accéder à votre musique. Appuyez sur la flèche droite pour continuer.
