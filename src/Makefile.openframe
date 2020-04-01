@@ -299,6 +299,7 @@ freefont:
 .PHONY: squeezeplay-strip
 squeezeplay-strip:
 	rm -rvf ${BUILD_TOP}/share/jive/applets/Bounce
+	rm -rvf ${BUILD_TOP}/share/jive/applets/FullscreenSkin
 	rm -rvf ${BUILD_TOP}/share/jive/applets/QVGA*
 	#rm -rvf ${BUILD_TOP}/share/jive/applets/Test*
 	rm -rvf ${BUILD_TOP}/share/jive/applets/WQVGA*
