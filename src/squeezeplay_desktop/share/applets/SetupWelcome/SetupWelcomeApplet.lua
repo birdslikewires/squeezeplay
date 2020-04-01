@@ -6,7 +6,7 @@ applets.SetupWelcome.SetupWelcome - Add a main menu option for setting up langua
 
 =head1 DESCRIPTION
 
-Allows user to select language used in Jive
+Allows user to select language and network settings used in Jive
 
 =head1 FUNCTIONS
 
@@ -18,6 +18,9 @@ Applet related methods are described in L<jive.Applet>.
 
 -- stuff we use
 local ipairs, pairs, assert, io, string = ipairs, pairs, assert, io, string
+
+local io               = require("io")
+local os               = require("os")
 
 local oo               = require("loop.simple")
 
@@ -76,15 +79,25 @@ function _freeAction(self)
 
 end
 
+-- Allows output of shell scripts to be captured.
+function os.capture(cmd)
+  local f = io.popen(cmd, 'r')
+  local s = f:read('*a')
+  f:close()
+  return s
+end
+
+-- First, show the language selection screen.
 function step1(self)
-	-- put Return to Setup menu item on jiveMain menu
+
+	-- Put 'Return to Setup' menu item on jiveMain menu
 	local returnToSetup = {
 		id   = 'returnToSetup',
 		node = 'home',
 		text = self:string("RETURN_TO_SETUP"),
 		weight = 2,
 		callback = function()
-			--note: don't refer to self here since the applet wil have been freed if this is being called
+			--note: don't refer to self here since the applet will have been freed if this is being called
 			appletManager:callService("step1")
 		end
 	}
@@ -103,7 +116,22 @@ function step1(self)
 end
 
 function step2(self)
-	return self:setupWelcomeShow(function() self:step3() end)
+	-- OPENFRAME: This hasn't been rewritten for netplan yet and ultimately may not be necessary.
+	-- If we're running on an OpenFrame then we need to configure the network on first load, after language selection.
+	-- We determine if the network has been configured, forcing a reboot if this is the first run.
+	-- local platform = os.capture("cat /tmp/openframe.ver")
+	-- platform = string.sub(platform,1,5)
+	-- if platform == "1" or platform == "2" then	
+	-- 	local netstatus = os.capture("sqp_JogglerNetwork.sh ip")
+	-- 	netstatus = string.sub(netstatus,1,10)
+	-- 	if netstatus == "No network" then
+	-- 		return self:setupWelcomeShow(function() self:setupnetwork() end)
+	-- 	else
+	-- 		return self:setupWelcomeShow(function() self:step3() end)
+	-- 	end
+	-- else
+		return self:setupWelcomeShow(function() self:step3() end)
+	-- end
 end
 
 function step3(self)
@@ -127,6 +155,11 @@ function step4(self)
 		end)
 end
 
+
+function setupnetwork(self)
+	self._topWindow = appletManager:callService("setupShowJogglerNetwork")
+	return self.topWindow
+end
 
 function setupWelcomeShow(self, setupNext)
 	local window = Window("help_list", self:string("WELCOME"), welcomeTitleStyle)
