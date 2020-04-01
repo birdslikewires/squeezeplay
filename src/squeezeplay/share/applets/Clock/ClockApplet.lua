@@ -47,16 +47,16 @@ local WH_FILL                = jive.ui.WH_FILL
 module(..., Framework.constants)
 oo.class(_M, Applet)
 
-local jogglerSkinAlarmX = 748
-local jogglerSkinAlarmY = 11
+local WVGAsmallSkinAlarmX = 748
+local WVGAsmallSkinAlarmY = 11
 
 -- Define useful variables for this skin
 local fontpath = "fonts/"
 local FONT_NAME = "FreeSans"
 local BOLD_PREFIX = "Bold"
 
-local function _isJogglerSkin(skinName)
-	if string.match(skinName, 'PiGridSkin') or string.match(skinName, 'JogglerSkin') then
+local function _isWVGAsmallSkin(skinName)
+	if string.match(skinName, 'PiGridSkin') or string.match(skinName, 'WVGAsmallSkin') then
 		return true
 	end
 end
@@ -77,8 +77,8 @@ end
 local function _imgpath(self)
 	local skinName = self.skinName
 	
-	if _isJogglerSkin(skinName) then
-		skinName = 'JogglerSkin'
+	if _isWVGAsmallSkin(skinName) then
+		skinName = 'WVGAsmallSkin'
 		
 	elseif _isWQVGASkin(skinName) then
 		skinName = "WQVGAsmallSkin"
@@ -423,7 +423,7 @@ function WordClock:__init(applet)
     obj.textdate = Label('textdate')
     obj.skinParams = WordClock:getSkinParams(skinName)
 
-    if _isJogglerSkin(skinName) or _isWQVGASkin(skinName) or _isHDSkin(skinName) then
+    if _isWVGAsmallSkin(skinName) or _isWQVGASkin(skinName) or _isHDSkin(skinName) then
         obj.pointer_textIt         = Surface:loadImage(obj.skinParams.textIt)  
         obj.pointer_textIs         = Surface:loadImage(obj.skinParams.textIs)  
         obj.pointer_textHas        = Surface:loadImage(obj.skinParams.textHas)  
@@ -485,14 +485,14 @@ function WordClock:_reDraw(screen)
     log:debug("WordClock:_reDraw")
     log:debug("WordClock:_reDraw self.skinName = " .. self.skinName)
 
-    if _isJogglerSkin(self.skinName) or _isWQVGASkin(self.skinName) or _isHDSkin(self.skinName) then
+    if _isWVGAsmallSkin(self.skinName) or _isWQVGASkin(self.skinName) or _isHDSkin(self.skinName) then
         local timenow = os.date("*t",os.time())
 
         local flags = WordClock:getwordflags(timenow)
 
         local all = false  -- Just for debugging screen position
         
-        -- ratio by which we have to multiply coordinates relative to the Joggler skin
+        -- ratio by which we have to multiply coordinates relative to the WVGAsmallSkin skin
         local r = self.skin.Clock.ratio
         
         -- zoom factor by which we have to resize the artwork
@@ -1155,7 +1155,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
         }
 
-    elseif _isJogglerSkin(skinName) or _isHDSkin(skinName) then
+    elseif _isWVGAsmallSkin(skinName) or _isHDSkin(skinName) then
 
         local dotMatrixBackground = Tile:loadImage(self.imgpath .. "Clocks/Dot_Matrix/wallpaper_clock_dotmatrix.png")
 
@@ -1228,32 +1228,32 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
             img = false,
         })
 
-        local jogglerSkinAlignWithBackgroundXOffset = 2
-        local jogglerSkinAlignWithBackgroundYOffset = 1
-        local jogglerSkinXOffset = 160 + jogglerSkinAlignWithBackgroundXOffset + 9
-        local jogglerSkinYOffset = 104 + jogglerSkinAlignWithBackgroundYOffset
+        local WVGAsmallSkinAlignWithBackgroundXOffset = 2
+        local WVGAsmallSkinAlignWithBackgroundYOffset = 1
+        local WVGAsmallSkinXOffset = 160 + WVGAsmallSkinAlignWithBackgroundXOffset + 9
+        local WVGAsmallSkinYOffset = 104 + WVGAsmallSkinAlignWithBackgroundYOffset
         
         local _clockDigit = {
             position = LAYOUT_NONE,
             w = 68 + 4,
-            y = 38 + jogglerSkinYOffset,
+            y = 38 + WVGAsmallSkinYOffset,
         }
         local _dateDigit = {
             position = LAYOUT_NONE,
             w = 27,
-            y = 192 + jogglerSkinYOffset,
+            y = 192 + WVGAsmallSkinYOffset,
         }
         
         local x = {}
-        x.h1 = 68 + jogglerSkinXOffset
+        x.h1 = 68 + WVGAsmallSkinXOffset
         x.h2 = x.h1 + 72
         x.dots = x.h2 + 75 - 1
         x.m1 = x.dots + 27 + 1
         x.m2 = x.m1 + 72
-        -- x.alarm = 73 + jogglerSkinXOffset
-        x.alarm = jogglerSkinAlarmX
+        -- x.alarm = 73 + WVGAsmallSkinXOffset
+        x.alarm = WVGAsmallSkinAlarmX
         -- x.M1 = x.alarm + 36 + 13 + 1 - 3
-        x.M1 = 73 + jogglerSkinXOffset + 36 + 13 + 1 - 3
+        x.M1 = 73 + WVGAsmallSkinXOffset + 36 + 13 + 1 - 3
         x.M2 = x.M1 + 30
         x.dot1 = x.M2 + 26 + 6
         x.D1 = x.dot1 + 10
@@ -1278,7 +1278,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
                 position = LAYOUT_NONE,
                 x = x.dots,
                 w = 38,
-                y = 75 + jogglerSkinYOffset,
+                y = 75 + WVGAsmallSkinYOffset,
             },
             m1 = _uses(_clockDigit, {
                 x = x.m1,
@@ -1289,8 +1289,8 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
 
             alarm = _uses(_dateDigit, {
                 w = 45,
-                -- y = 191 + jogglerSkinYOffset,
-                y = jogglerSkinAlarmY,
+                -- y = 191 + WVGAsmallSkinYOffset,
+                y = WVGAsmallSkinAlarmY,
                 x = x.alarm,
             }),
             M1 = _uses(_dateDigit, {
@@ -1302,7 +1302,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
             dot1 = _uses(_dateDigit, {
                 x = x.dot1,
                 w = 13,
-                y = 222 + jogglerSkinYOffset,
+                y = 222 + WVGAsmallSkinYOffset,
             }),
             D1 = _uses(_dateDigit, {
                 x = x.D1,
@@ -1313,7 +1313,7 @@ function DotMatrix:getDotMatrixClockSkin(skinName)
             dot2 = _uses(_dateDigit, {
                 x = x.dot2,
                 w = 13,
-                y = 222 + jogglerSkinYOffset,
+                y = 222 + WVGAsmallSkinYOffset,
             }),
             Y1 = _uses(_dateDigit, {
                 x = x.Y1,
@@ -1617,12 +1617,12 @@ function WordClock:getWordClockSkin(skinName)
     log:debug("Image path - " .. self.imgpath)
     local s = {}
         
-    -- HDSkin is using the Joggler's artwork. Quite a mess...
-    local imgpath = string.gsub(self.imgpath, 'HDSkin', 'JogglerSkin')
+    -- HDSkin is using the WVGAsmallSkin artwork. Quite a mess...
+    local imgpath = string.gsub(self.imgpath, 'HDSkin', 'WVGAsmallSkin')
 
     local wordClockBackground = Tile:loadImage(imgpath .. "Clocks/WordClock/wallpaper_clock_word.png")
         
-    if _isJogglerSkin(skinName) or _isHDSkin(skinName) then
+    if _isWVGAsmallSkin(skinName) or _isHDSkin(skinName) then
         local screen_width, screen_height = Framework:getScreenSize()
         local ratio = math.min(screen_width/800, screen_height/480)
 
@@ -1725,9 +1725,9 @@ function WordClock:getSkinParams(skinName)
     
     log:debug("Image path - " .. self.imgpath)
     
-    if _isJogglerSkin(skinName) or _isWQVGASkin(skinName) or _isHDSkin(skinName) then
-        -- HDSkin is using the Joggler's artwork. Quite a mess...
-        local imgpath = string.gsub(self.imgpath, 'HDSkin', 'JogglerSkin') .. "Clocks/WordClock/"
+    if _isWVGAsmallSkin(skinName) or _isWQVGASkin(skinName) or _isHDSkin(skinName) then
+        -- HDSkin is using the WVGAsmallSkin artwork. Quite a mess...
+        local imgpath = string.gsub(self.imgpath, 'HDSkin', 'WVGAsmallSkin') .. "Clocks/WordClock/"
 
         local params = {
             textIt        = imgpath .. 'text-it.png',
@@ -1764,8 +1764,8 @@ function WordClock:getSkinParams(skinName)
             textPM         = imgpath .. 'text-pm.png',
 
             alarmIcon  = imgpath .. 'icon_alarm_word.png',
-            alarmX     = jogglerSkinAlarmX,
-            alarmY     = jogglerSkinAlarmY,
+            alarmX     = WVGAsmallSkinAlarmX,
+            alarmY     = WVGAsmallSkinAlarmY,
         }
         
         if _isWQVGASkin(skinname) then
@@ -2225,15 +2225,15 @@ function Digital:getDigitalClockSkin(skinName)
             m1Shadow = { hidden = 1 },
             m2Shadow = { hidden = 1 },
         })
-    elseif _isJogglerSkin(skinName) or _isHDSkin(skinName) then
+    elseif _isWVGAsmallSkin(skinName) or _isHDSkin(skinName) then
 
         local screen_width, screen_height = Framework:getScreenSize()
         local scale = screen_height / 480
         local scale_x = screen_width / 800
         local digitWidth = 120 * scale
 
-        local jogglerSkinXOffset = 20
-        local jogglerSkinYOffset = 104
+        local WVGAsmallSkinXOffset = 20
+        local WVGAsmallSkinYOffset = 104
 
         local digitalClockBackground = _loadImage(self, "Clocks/Digital/wallpaper_clock_digital.png")
         digitalClockBackground = digitalClockBackground:zoom(scale_x, scale, 1)
@@ -2245,7 +2245,7 @@ function Digital:getDigitalClockSkin(skinName)
         x.m1   = x.dots + 40
         x.m2   = x.m1 + digitWidth
         x.ampm = x.m2 + digitWidth
-        x.alarm = jogglerSkinAlarmX
+        x.alarm = WVGAsmallSkinAlarmX
         
         local digitalDots = _loadImage(self, "Clocks/Digital/clock_dots_digital.png")
         if scale ~= 1 then
@@ -2265,7 +2265,7 @@ function Digital:getDigitalClockSkin(skinName)
             font = _font(220 * scale),
             lineHeight = 220 * scale,
             fg = { 0xcc, 0xcc, 0xcc },
-            y = 40 + jogglerSkinYOffset,
+            y = 40 + WVGAsmallSkinYOffset,
             zOrder = 10,
         }
         
@@ -2340,7 +2340,7 @@ function Digital:getDigitalClockSkin(skinName)
                 position = LAYOUT_NONE,
                 x = x.alarm,
                 -- y = 56,
-                y = jogglerSkinAlarmY,
+                y = WVGAsmallSkinAlarmY,
             },
             ampm = {
                 position = LAYOUT_NONE,
@@ -2823,7 +2823,7 @@ function Analog:getAnalogClockSkin(skinName)
     elseif _isWQVGASkin(skinName) then
         analogClockBackground = Tile:loadImage(self.imgpath .. "Clocks/Analog/wallpaper_clock_analog.png")
 
-    elseif _isJogglerSkin(skinName) or _isHDSkin(skinName) then
+    elseif _isWVGAsmallSkin(skinName) or _isHDSkin(skinName) then
         local screen_width, screen_height = Framework:getScreenSize()
         local ratio = math.max(screen_width/800, screen_height/480)
 
@@ -2875,9 +2875,9 @@ function Analog:getSkinParams(skin)
     if _isWQVGASkin(skin) then
         params.alarmY = 18
         
-    elseif _isJogglerSkin(skin) or _isHDSkin(skin) then
-        params.alarmX = jogglerSkinAlarmX
-        params.alarmY = jogglerSkinAlarmY
+    elseif _isWVGAsmallSkin(skin) or _isHDSkin(skin) then
+        params.alarmX = WVGAsmallSkinAlarmX
+        params.alarmY = WVGAsmallSkinAlarmY
         params.ratio  = math.max(screen_width/800, screen_height/480)
         
         if _isHDSkin(skin) then
