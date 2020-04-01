@@ -199,6 +199,8 @@ function JiveMain:setSoftPowerState(softPowerState, isServerRequest)
 	local currentPlayer = appletManager:callService("getCurrentPlayer")
 	if _softPowerState == "off" then
 		log:info("Turn soft power off")
+		-- OPENFRAME - power down display, after a short delay, when power state changes.
+		os.execute("xset -display :0.0 dpms 8 0 0")
 		if currentPlayer and (currentPlayer:isConnected() or currentPlayer:isLocal()) then
 			currentPlayer:setPower(false, nil, isServerRequest)
 		end
@@ -206,6 +208,10 @@ function JiveMain:setSoftPowerState(softPowerState, isServerRequest)
 		appletManager:callService("activateScreensaver", isServerRequest)
 	elseif _softPowerState == "on" then
 		log:info("Turn soft power on")
+		-- OPENFRAME - power on display immediately when power state changes.
+		os.execute("xset -display :0.0 dpms 0 0 0")
+		os.execute("xset -display :0.0 dpms force on")
+		os.execute("xset -display :0.0 s reset")
 		--todo: Define what should happen for a non-jive remote player. Currently if a server is down, locally a SS will engage, but when the server
 		--       comes back up the server is considered the master power might soft power SP back on 
 		if currentPlayer and (currentPlayer:isConnected() or currentPlayer:isLocal()) then
@@ -229,6 +235,8 @@ function JiveMain:togglePower()
 		JiveMain:setSoftPowerState("on")
 	elseif powerState == "on" then
 		JiveMain:setSoftPowerState("off")
+		-- OPENFRAME - power down display when power toggle is pressed.
+		os.execute("xset -display :0.0 dpms force off")
 	else
 		log:error("unknown current soft power state: ", powerState)
 	end
