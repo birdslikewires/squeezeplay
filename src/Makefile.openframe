@@ -23,7 +23,7 @@ BASE_DIR = $(dir ${SRC_DIR})
 
 BUILD_FOR = "openframe"
 
-export BUILD_TOP=$(BASE_DIR)build/${BUILD_FOR}
+export BUILD_TOP=$(BASE_DIR)build/$(BUILD_FOR)
 
 DESTDIR=${BUILD_TOP}
 export PREFIX=${DESTDIR}
@@ -363,5 +363,5 @@ clean:
 	-cd flac-1.3.3; make distclean; rm src/libFLAC++/flac++.pc; find . -type f -name Makefile -exec rm {} \; ; find . -type d -name '.deps' -exec rm -rf {} \;
 	-cd squeezeplay; make distclean; rm src/version.h
 	-cd squeezeplay_desktop; make distclean
-	-cd $(BASE_DIR)build; rm -rf ${BUILD_FOR} *.tgz
+	-cd $(BASE_DIR)build; rm -rf $(BUILD_FOR)
 	-rm -rf generated
