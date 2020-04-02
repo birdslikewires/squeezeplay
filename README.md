@@ -37,11 +37,13 @@ Then pushing the repo.
 
 ## Compiling
 
+Take a look in `src` and you should find a README which relates to the OpenFrame makefile with dependencies. I'm following this pattern for now in case anybody else wants to clone this repo for other platforms.
+
 With a following wind and a lucky charm you should be able to compile it with this:
 
 ```
 cd squeezeplay/src
-make -f Makefile.linux
+make -f Makefile.openframe
 ```
 
 Good luck.
