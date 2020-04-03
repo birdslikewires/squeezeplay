@@ -53,6 +53,11 @@ my $d = {
 		assetDir => '../../../../../assets/QVGAskin/Landscape/Wallpaper',
 		skinDir => '../../../../squeezeplay_desktop/share/applets/SetupWallpaper/wallpaper',
 	},
+	# copy landscape wallpaper to squeezeplay_openframe
+	landscapeWallpaperToDesktop => {
+		assetDir => '../../../../../assets/QVGAskin/Landscape/Wallpaper',
+		skinDir => '../../../../squeezeplay_openframe/share/applets/SetupWallpaper/wallpaper',
+	},
 	# copy portrait wallpaper to squeezeplay_jive
 	portraitWallpaper => {
 		assetDir => '../../../../../assets/QVGAskin/Portrait/Wallpaper',
