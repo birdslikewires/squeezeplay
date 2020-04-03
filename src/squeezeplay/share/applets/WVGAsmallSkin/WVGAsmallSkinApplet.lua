@@ -8,12 +8,10 @@ applets.WVGAsmallSkin.WVGAsmallSkinApplet
 
 This applet implements an 800x480 resolution skin.
 
-Redesigned from WQVGAsmallSkin by Andy Davison.
+Redesigned from WQVGAsmallSkin by Andrew Davison.
+birdslikewires.net
 
 Built upon the work of 3guk, Tarkan Akdam and Justblair.
-
-Version 1.10 (10th April 2012)
-birdslikewires.co.uk
 
 
 =head1 FUNCTIONS

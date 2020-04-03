@@ -48,9 +48,8 @@ if [ -e /tmp/openframe.ver ]; then
 	# 	$INSTALL_DIR/bin/shairport.sh &
 	# fi
 
-# else
-
-# 	[ -x /usr/local/bin/shairport ] && $INSTALL_DIR/bin/sqp_JogglerFeatures.sh air start
+	# HUH - why is this here?
+ 	#[ -x /usr/local/bin/shairport ] && $INSTALL_DIR/bin/sqp_JogglerFeatures.sh air start
 
 fi
 

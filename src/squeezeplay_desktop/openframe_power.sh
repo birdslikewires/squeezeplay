@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # openframe_power v1.10 (31st March 2020) by Andrew Davison
-#  Executed by OpenFramePower and Quit applets.
+#  Executed by OpenFramePower applet.
 
 if [ "$1" = "quit" ]; then
 

@@ -2,7 +2,7 @@
 # Squeezeplay makefile for OpenFrame devices (based on Makefile.linux)
 # Copyright 2007 Logitech
 # Copyright 2018 Ralph Irving
-# Whatever 2020 Andrew Davison
+# Whatever  2020 Andrew Davison
 ################################################################################
 #
 # Additional packages required to build
