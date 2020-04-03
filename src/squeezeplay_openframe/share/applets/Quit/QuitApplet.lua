@@ -2,13 +2,11 @@
 --[[
 =head1 NAME
 
-applets.OpenFramePower.OpenFramePowerApplet
+applets.Quit.QuitApplet
 
 =head1 DESCRIPTION
 
-OpenFramePower v1.00 (10th April 2012)
-
-This applet replaces the standard Quit applet on an OpenFrame, providing more options.
+This replaces the standard Quit applet on an OpenFrame, providing more options.
 
 =cut
 --]]

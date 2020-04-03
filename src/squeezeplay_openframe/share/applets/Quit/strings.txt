@@ -2,6 +2,15 @@
 # The two letter codes are defined by ISO 639-1
 # http://en.wikipedia.org/wiki/List_of_ISO_639_codes
 
+TITLE
+	EN	Quit Options
+
+HEADER
+	EN	If you're powering down, don't forget to switch off at the wall!
+
+RELAUNCH
+	EN	Relaunch
+
 QUIT
 	CS	Ukončit
 	DA	Afslut
@@ -17,3 +26,8 @@ QUIT
 	RU	Выйти
 	SV	Avsluta
 
+REBOOT
+	EN	Reboot
+	
+SHUTDOWN
+	EN	Shutdown
