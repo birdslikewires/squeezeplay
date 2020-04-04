@@ -1,0 +1,36 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+TITLE
+	EN	Interface Configuration
+
+IFACEINT
+	EN	Internal Interface
+
+IFACEEXT
+	EN	External Interface
+	
+IFACEINTMSG
+	EN	The internal audio interface has been configured.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+	
+IFACEEXTMSG
+	EN	The external (USB) audio interface has been configured.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+
+IFACERESET
+	EN	Reset to Defaults
+	
+IFACERESETMSG
+	EN	Configuration has been reset to defaults.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+
+IFACELIMIT
+	EN	Master Output Limiter
+
+IFACELIMITMSG
+	EN	If connecting this device to external audio equipment, consider disabling the master audio output limiter to send the highest possible signal to your amplifier.\nNB: Disabling the limiter may overload the internal speakers if equipment is disconnected.
+
+ENABLED
+	EN	Enabled
+
+DISABLED
+	EN	Disabled
