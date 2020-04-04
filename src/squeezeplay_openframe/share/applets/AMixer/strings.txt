@@ -1,0 +1,36 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+APPLET_NAME
+	EN	Mixer Controls
+
+SELECT_CONTROL
+	EN	Select Mixer Control
+
+HELP_START
+	EN	Tap the audio interface name (first item) to cycle through available cards.\nChoose an input or output to manage its settings. 
+
+CAPABILITIES
+	EN	Choose Option
+
+VOLUME_DESCRIPTION
+	EN	Volume
+
+MUTE_DESCRIPTION
+	EN	Mute State
+
+MUTED
+	EN	Muted
+
+UNMUTED
+	EN	Unmuted
+
+MUTE
+	EN	Mute
+
+UNMUTE
+	EN	Unmute
+
+CANCEL
+	EN	Cancel
