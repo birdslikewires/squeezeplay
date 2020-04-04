@@ -53,25 +53,7 @@ if [ -e /tmp/openframe.ver ]; then
 
 fi
 
-# ALSA
-#
-# Supported sample sizes 0=autodetect, default=16
-# "<0|16|24|24_3|32>"
-#
-# export USEALSASAMPLESIZE=16
-# export USEALSADEVICE=default
-# export USEALSACAPTURE=default
-# export USEALSAEFFECTS=null
-# export USEALSAPCMTIMEOUT=500
-# export USEALSABUFFERTIME=30000
-# export USEALSAPERIODCOUNT=3
-# export USEALSANOMMAP=null
-#
-#
-# Squeezeplay Debug
-#
-# export SQUEEZEPLAY_DECODE_DEBUG=1
-# export SQUEEZEPLAY_UPLOAD=1
+xset -display :0.0 dpms force on
 
 cd $INSTALL_DIR/bin
 ./jive
