@@ -311,6 +311,8 @@ squeezeplay-strip:
 # This builds the .tarball. It's called by 'all' so no need to run it manually
 # 
 squeezeplay-tgz: squeezeplay/Makefile
+	cp squeezeplay.revision ${BUILD_TOP}/share
+	cp squeezeplay.version ${BUILD_TOP}/share
 	cd squeezeplay; make squeezeplay-tgz
 
 #
