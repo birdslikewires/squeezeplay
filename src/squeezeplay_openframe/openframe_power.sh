@@ -6,7 +6,7 @@
 if [ "$1" = "quit" ]; then
 
 	/usr/bin/xset -display :0.0 dpms 0 0 0
-	/usr/local/sbin/of-backlight `cat /tmp/sqp_initial_bl` &
+	[ -e /tmp/of_initial_bl ] && /usr/local/sbin/of-backlight `cat /tmp/of_initial_bl` &
 
 fi
 

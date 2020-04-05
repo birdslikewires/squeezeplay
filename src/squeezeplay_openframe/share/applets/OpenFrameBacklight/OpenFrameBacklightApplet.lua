@@ -2,13 +2,13 @@
 --[[
 =head1 NAME
 
-applets.JogglerBacklight.JogglerBacklightApplet - For controlling display brightness on a Joggler.
+applets.OpenFrameBacklight.OpenFrameBacklightApplet - For controlling display brightness on an OpenFrame.
 
 =head1 DESCRIPTION
 
-JogglerBacklight v1.01 (10th April 2012)
+OpenFrameBacklight v1.02 (5th April 2020)
 
-This applet adjusts the backlight level on an O2 Joggler.
+This applet adjusts the backlight level on an OpenFrame.
 
 =cut
 --]]
@@ -62,7 +62,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-						os.execute("sqp_JogglerBacklight.sh 999 &")
+						os.execute("of-backlight 999 &")
 						self:getSettings()["backlight"] = 999
 					end,
 					(backlight == 999)
@@ -75,7 +75,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-						os.execute("sqp_JogglerBacklight.sh 100 &")
+						os.execute("of-backlight 100 &")
 						self:getSettings()["backlight"] = 100
 					end,
 					(backlight == 100)
@@ -88,7 +88,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-					os.execute("sqp_JogglerBacklight.sh 80 &")
+					os.execute("of-backlight 80 &")
 						self:getSettings()["backlight"] = 80
 					end,
 					(backlight == 80)
@@ -101,7 +101,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-					os.execute("sqp_JogglerBacklight.sh 60 &")
+					os.execute("of-backlight 60 &")
 						self:getSettings()["backlight"] = 60
 					end,
 					(backlight == 60)
@@ -114,7 +114,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-					os.execute("sqp_JogglerBacklight.sh 40 &")
+					os.execute("of-backlight 40 &")
 						self:getSettings()["backlight"] = 40
 					end,
 					(backlight == 40)
@@ -127,7 +127,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-					os.execute("sqp_JogglerBacklight.sh 20 &")
+					os.execute("of-backlight 20 &")
 						self:getSettings()["backlight"] = 20
 					end,
 					(backlight == 20)
@@ -140,7 +140,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-					os.execute("sqp_JogglerBacklight.sh 10 &")
+					os.execute("of-backlight 10 &")
 						self:getSettings()["backlight"] = 10
 					end,
 					(backlight == 10)
@@ -153,7 +153,7 @@ function backlightSetting(self, menuItem)
 					"radio",
 					group,
 					function()
-					os.execute("sqp_JogglerBacklight.sh 5 &")
+					os.execute("of-backlight 5 &")
 						self:getSettings()["backlight"] = 5
 					end,
 					(backlight == 5)
@@ -173,14 +173,8 @@ end
 
 =head1 LICENSE
 
-Created by Andy Davison
-birdslikewires.co.uk
-
-This file is made available under the following Creative Commons licence:
-
-Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0).
-
-Please see http://creativecommons.org/licenses/by-sa/3.0/ for details.
+Created by Andrew Davison
+birdslikewires.net
 
 =cut
 --]]
