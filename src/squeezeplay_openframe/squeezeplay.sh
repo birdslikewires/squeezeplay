@@ -27,16 +27,16 @@ if [ -e /tmp/openframe.ver ]; then
 
 	if [ ! -d /home/$USER/.squeezeplay ]; then
 		 echo "Initial run, setting master audio output to full."
-		/usr/bin/amixer -q -c 0 sset "Master" 100% unmute
+		/usr/bin/amixer -q -c 0 set "Master" 100% unmute
 	fi
 
 	if [ $OPENFRAME -eq 1 ]; then
-		/usr/bin/amixer -q -c 0 sset "Auto-Mute Mode" "Line Out+Speaker" &>/dev/null
+		/usr/bin/amixer -q -c 0 set "Auto-Mute Mode" "Line Out+Speaker" &>/dev/null
 	fi
 
 	if [ $OPENFRAME -eq 2 ]; then
-		/usr/bin/amixer -q -c 0 sset "Auto-Mute Mode" "Enabled" &>/dev/null
-		/usr/bin/amixer -q -c 0 sset "Loopback Mixing" "Enabled" &>/dev/null
+		/usr/bin/amixer -q -c 0 set "Auto-Mute Mode" "Enabled" &>/dev/null
+		/usr/bin/amixer -q -c 0 set "Loopback Mixing" "Enabled" &>/dev/null
 	fi
 
 	# killall shairport &>/dev/null

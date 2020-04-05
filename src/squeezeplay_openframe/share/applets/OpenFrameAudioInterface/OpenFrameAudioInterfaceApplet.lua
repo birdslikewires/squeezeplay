@@ -2,13 +2,13 @@
 --[[
 =head1 NAME
 
-applets.JogglerAudio.JogglerAudioApplet
+applets.OpenFrameAudioInterface.OpenFrameAudioInterfaceApplet
 
 =head1 DESCRIPTION
 
-JogglerAudio v1.05 (13th February 2014)
+OpenFrameAudioInterface v1.06 (5th April 2020)
 
-This applet is used to configure the Joggler's audio interface.
+This applet is used to configure the OpenFrame's audio interface.
 
 =cut
 --]]
@@ -58,182 +58,96 @@ oo.class(_M, Applet)
 -- Define the initial menu.
 function menu(self, menuItem)
 
-	osplat = os.capture('sqp_JogglerUpdate.sh platform')
-
 	local window = Window("text_list", self:string("TITLE"))
 
 	local group = RadioGroup()
 	
 	local interface = self:getSettings()["interface"]
 	
-	if osplat == "sqpos" then
-	
-		local menu = SimpleMenu("menu", {
-	
-			{
-				text = self:string("IFACEINT"),
-				style = 'item_choice',
-				check = RadioButton(
-					"radio",
-					group,
-					function()
-						os.execute("sqp_JogglerAudio.sh iface 0")
-						self:getSettings()["interface"] = 0
-						self:storeSettings()
-						self:popupmsg('IFACEINTMSG',5000)
-					end,
-					(interface == 0)
-				),
-			},
-		
-			{
-				text = self:string("IFACEEXT"),
-				style = 'item_choice',
-				check = RadioButton(
-					"radio",
-					group,
-					function()
-						os.execute("sqp_JogglerAudio.sh iface 1")
-						self:getSettings()["interface"] = 1
-						self:storeSettings()
-						self:popupmsg('IFACEEXTMSG',5000)
-					end,
-					(interface == 1)
-				),
-			},
-		
-			-- No need for the limiter option, as we don't limit any more.
-			-- Users can play with the AMixer applet to adjust levels now.
-			--{
-			--	text = self:string("IFACELIMIT"),
-			--	sound = "WINDOWSHOW",
-			--	callback = function(event, menuItem)
-			--		self:ifacelimit(menuItem)
-			--	end
-			--},
-		
-			{
-				text = self:string("IFACERESET"),
-				style = 'item_choice',
-				sound = "WINDOWSHOW",
-				callback = function(event, menuItem)
-					os.execute("sqp_JogglerAudio.sh reset")
-					self:getSettings()["iifacelimit"] = 1
-					self:getSettings()["interface"] = 0
-					self:storeSettings()
-					self:popupmsg('IFACERESETMSG',5000)
-				end
-			},
-				
-		})
-
-		window:addWidget(menu)
-		self:tieAndShowWindow(window)
-		return window
-		
-	else
-	
-		local menu = SimpleMenu("menu", {
-
-			{
-				text = self:string("IFACEINT"),
-				style = 'item_choice',
-				check = RadioButton(
-					"radio",
-					group,
-					function()
-						os.execute("sqp_JogglerAudio.sh iface 0")
-						self:getSettings()["interface"] = 0
-						self:storeSettings()
-						self:popupmsg('IFACEINTMSG',5000)
-					end,
-					(interface == 0)
-				),
-			},
-	
-			{
-				text = self:string("IFACEEXT"),
-				style = 'item_choice',
-				check = RadioButton(
-					"radio",
-					group,
-					function()
-						os.execute("sqp_JogglerAudio.sh iface 1")
-						self:getSettings()["interface"] = 1
-						self:storeSettings()
-						self:popupmsg('IFACEEXTMSG',5000)
-					end,
-					(interface == 1)
-				),
-			},
-	
-			{
-				text = self:string("IFACERESET"),
-				style = 'item_choice',
-				sound = "WINDOWSHOW",
-				callback = function(event, menuItem)
-					os.execute("sqp_JogglerAudio.sh reset")
-					self:getSettings()["interface"] = 0
-					self:storeSettings()
-					self:popupmsg('IFACERESETMSG',5000)
-				end
-			},
-			
-		})
-
-		window:addWidget(menu)
-		self:tieAndShowWindow(window)
-		return window
-		
-	end
-	
-end
-
-
--- Define the internal interface limit screen
-function ifacelimit(self, menuItem)
-	local window = Window("text_list", menuItem.text)
-	local textarea = Textarea("help_text", self:string("IFACELIMITMSG"))
-	
-	local iifacelimit = self:getSettings()["iifacelimit"]
-
-	local group = RadioGroup()
-	
 	local menu = SimpleMenu("menu", {
+
 		{
-			text = self:string("DISABLED"),
+			text = self:string("IFACEINTDIRECT"),
 			style = 'item_choice',
 			check = RadioButton(
-				"radio", group,
+				"radio",
+				group,
 				function()
-					os.execute("sqp_JogglerAudio.sh limiter disabled")
-					self:getSettings()["iifacelimit"] = 0
+					os.execute("openframe_audiointerface.sh 0 direct")
+					self:getSettings()["interface"] = 0
 					self:storeSettings()
+					self:popupmsg('IFACEINTDIRECTMSG',8000)
 				end,
-				(iifacelimit == 0)
+				(interface == 0)
 			),
 		},
 
-
 		{
-			text = self:string("ENABLED"),
+			text = self:string("IFACEINTSHARED"),
 			style = 'item_choice',
 			check = RadioButton(
-				"radio", group,
+				"radio",
+				group,
 				function()
-					os.execute("sqp_JogglerAudio.sh limiter enabled")
-					self:getSettings()["iifacelimit"] = 1
+					os.execute("openframe_audiointerface.sh 0 shared")
+					self:getSettings()["interface"] = 1
 					self:storeSettings()
+					self:popupmsg('IFACEINTSHAREDMSG',8000)
 				end,
-				(iifacelimit == 1)
+				(interface == 1)
 			),
 		},
+
+		{
+			text = self:string("IFACEEXTDIRECT"),
+			style = 'item_choice',
+			check = RadioButton(
+				"radio",
+				group,
+				function()
+					os.execute("openframe_audiointerface.sh 1 direct")
+					self:getSettings()["interface"] = 2
+					self:storeSettings()
+					self:popupmsg('IFACEEXTDIRECTMSG',8000)
+				end,
+				(interface == 2)
+			),
+		},
+	
+		{
+			text = self:string("IFACEEXTSHARED"),
+			style = 'item_choice',
+			check = RadioButton(
+				"radio",
+				group,
+				function()
+					os.execute("openframe_audiointerface.sh 1 shared")
+					self:getSettings()["interface"] = 3
+					self:storeSettings()
+					self:popupmsg('IFACEEXTSHAREDMSG',8000)
+				end,
+				(interface == 3)
+			),
+		},
+	
+		{
+			text = self:string("IFACERESET"),
+			style = 'item_choice',
+			sound = "WINDOWSHOW",
+			callback = function(event, menuItem)
+				os.execute("openframe_audiointerface.sh 0 shared")
+				self:getSettings()["interface"] = 1
+				self:storeSettings()
+				self:popupmsg('IFACERESETMSG',5000)
+			end
+		},
+			
 	})
 
 	window:addWidget(menu)
-	menu:setHeaderWidget(textarea)
 	self:tieAndShowWindow(window)
-	return window;
+	return window
+	
 end
 
 

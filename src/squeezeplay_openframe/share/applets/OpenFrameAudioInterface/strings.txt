@@ -1,0 +1,42 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+TITLE
+	EN	Audio Interface
+
+IFACEINTDIRECT
+	EN	Internal (Direct)
+
+IFACEINTSHARED
+	EN	Internal (Mixer)
+
+IFACEEXTDIRECT
+	EN	External (Direct)
+
+IFACEEXTSHARED
+	EN	External (Mixer)
+
+IFACEINTDIRECTMSG
+	EN	Direct access to the internal audio interface has been configured. Variable output sample rates are enabled, but only SqueezePlay will have access to the interface while running.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+
+IFACEINTSHAREDMSG
+	EN	Access to the internal audio interface through the mixer has been configured. The output sample rate is fixed at 44.1 kHz, but all software on this device can access the interface.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+
+IFACEEXTDIRECTMSG
+	EN	Direct access to an external audio interface has been configured. Variable output sample rates are enabled, but only SqueezePlay will have access to the interface while running.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+
+IFACEEXTSHAREDMSG
+	EN	Access to an external audio interface through the mixer has been configured. The output sample rate is fixed at 44.1 kHz, but all software on this device can access the interface.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+
+IFACERESET
+	EN	Reset to Defaults
+	
+IFACERESETMSG
+	EN	Configuration has been reset to defaults.\n\nYou will need to relaunch SqueezePlay for this setting to take effect.
+
+ENABLED
+	EN	Enabled
+
+DISABLED
+	EN	Disabled
