@@ -1,6 +1,6 @@
 [submodule "src/portaudio"]
 	path = src/portaudio
-	url = https://github.com/andydvsn/portaudio
+	url = https://github.com/birdslikewires/portaudio
 [submodule "src/zlib"]
 	path = src/zlib
-	url = https://github.com/andydvsn/zlib
+	url = https://github.com/birdslikewires/zlib
