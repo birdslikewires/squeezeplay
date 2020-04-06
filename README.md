@@ -7,7 +7,7 @@ SqueezePlay software for OpenFrame devices.
 This project contains submodules from other Git repositories, so you need to initialise and update those after cloning this.
 
 ```
-git clone https://github.com/andydvsn/squeezeplay
+git clone https://github.com/birdslikewires/squeezeplay
 git -C squeezeplay submodule update --init
 ```
 
