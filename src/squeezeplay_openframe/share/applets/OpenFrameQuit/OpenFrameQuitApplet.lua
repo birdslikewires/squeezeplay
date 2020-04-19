@@ -2,7 +2,7 @@
 --[[
 =head1 NAME
 
-applets.Quit.QuitApplet
+applets.OpenFrameQuit.OpenFrameQuitApplet
 
 =head1 DESCRIPTION
 

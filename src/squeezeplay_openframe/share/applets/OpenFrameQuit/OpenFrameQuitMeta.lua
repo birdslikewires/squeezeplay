@@ -2,11 +2,11 @@
 --[[
 =head1 NAME
 
-applets.Quit.QuitMeta - Quit Meta
+applets.OpenFrameQuit.OpenFrameQuitMeta - OpenFrameQuit Meta
 
 =head1 DESCRIPTION
 
-See L<applets.Quit.QuitApplet>.
+See L<applets.OpenFrameQuit.OpenFrameQuitApplet>.
 
 =cut
 --]]
@@ -38,7 +38,7 @@ end
 
 function registerApplet(meta)
 	
-	jiveMain:addItem(meta:menuItem('appletQuit', 'home', "QUIT", function(applet, ...) applet:menu(...) end, 1010, nil, "hm_quit"))
+	jiveMain:addItem(meta:menuItem('appletOpenFrameQuit', 'home', "QUIT", function(applet, ...) applet:menu(...) end, 1010, nil, "hm_quit"))
 
 end
 
