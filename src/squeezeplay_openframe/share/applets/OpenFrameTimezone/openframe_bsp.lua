@@ -1,12 +1,12 @@
 --[[
 =head1 NAME
 
-applets.JogglerSetupTZ.joggleros_bsp
+applets.OpenFrameTimeZone.openframe_bsp
 
 =head1 DESCRIPTION
 
-This modul supports the applet which implements a timezone adjustment for JogglerOS
-purpose is to replace the squeezeos_bsp module
+This module supports the applet implementing timezone adjustment for OpenFrames.
+It implements the functionality of the squeezeos_bsp module where necessary.
 
 =head1 FUNCTIONS
 
@@ -16,10 +16,10 @@ Applet based on original SetupTZ
 --]]
 
 local io            = require("io")
-local joggleros     = {}
+local openframeos   = {}
 
-function joggleros.getTimezone()
-	local success,result = capture('sqp_JogglerSetupTZ.sh current')
+function openframeos.getTimezone()
+	local success,result = capture('openframe_timezone.sh current')
 	if success then 
 		return result
 	else
@@ -27,8 +27,8 @@ function joggleros.getTimezone()
 	end
 end
 
-function joggleros.setTimezone(cmd)
-	local success,result = capture('sqp_JogglerSetupTZ.sh apply ' .. cmd)
+function openframeos.setTimezone(timezone)
+	local success,result = capture('openframe_timezone.sh apply ' .. timezone)
 	if success then 
 		return true
 	else
@@ -47,7 +47,7 @@ function capture(cmd)
 	return true, result
 end
 
-return joggleros
+return openframeos
 
 --[[
 

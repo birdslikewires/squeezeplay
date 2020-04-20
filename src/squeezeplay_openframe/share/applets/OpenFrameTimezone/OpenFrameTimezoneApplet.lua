@@ -1,7 +1,7 @@
 --[[
 =head1 NAME
 
-applets.OpenFrameTimezone.OpenFrameTimezoneApplet
+applets.OpenFrameTimeZone.OpenFrameTimeZoneApplet
 
 =head1 DESCRIPTION
 
