@@ -20,8 +20,8 @@ local pairs = pairs
 local oo                     = require("loop.simple")
 local string                 = require("string")
 
-local squeezeos              = require((...):match("(.-)[^%.]+$") .. "openframe_bsp")
---local squeezeos              = require("openframe_bsp")
+local squeezeos              = require((...):match("(.-)[^%.]+$") .. "openframeos_bsp")
+--local squeezeos              = require("squeezeos_bsp")
 
 local Applet                 = require("jive.Applet")
 local System                 = require("jive.System")
@@ -29,6 +29,7 @@ local RadioGroup             = require("jive.ui.RadioGroup")
 local RadioButton            = require("jive.ui.RadioButton")
 local Framework              = require("jive.ui.Framework")
 local SimpleMenu             = require("jive.ui.SimpleMenu")
+local Textarea               = require("jive.ui.Textarea")
 local Window                 = require("jive.ui.Window")
 
 module(..., Framework.constants)
@@ -121,6 +122,7 @@ local timezones = {
 
 function settingsShow(self, menuItem)
 	local current_tz = squeezeos.getTimezone()
+	local current_tz = string.gsub(current_tz, "\n", "")
 	local radio_group = RadioGroup()
 	local menu_list = {}
 	local tz_selected_index
@@ -128,7 +130,7 @@ function settingsShow(self, menuItem)
 	for k,tzdata in pairs(timezones) do
 		local enableme = false
 		if tzdata.olson == current_tz then
-			tz_selected_index = k
+			--tz_selected_index = k
 			enableme = true
 		end
 		menu_list[k] = {
@@ -148,12 +150,13 @@ function settingsShow(self, menuItem)
 		}
 	end
 
-
 	self.window = Window("help_list", menuItem.text, "text")
 	self.menu = SimpleMenu("menu", menu_list)
 
 	if tz_selected_index then self.menu:setSelectedIndex(tz_selected_index) end
 
+	self.headermsg = Textarea("help_text", current_tz)
+	self.menu:setHeaderWidget(self.headermsg)
 	self.window:addWidget(self.menu)
 	self:tieAndShowWindow(self.window)
 	return self.window

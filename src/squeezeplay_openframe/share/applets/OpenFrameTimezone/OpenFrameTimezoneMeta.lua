@@ -5,7 +5,7 @@ applets.OpenFrameTimeZone.OpenFrameTimeZoneMeta
 
 =head1 DESCRIPTION
 
-This applet implements a timezone adjustment for JogglerOS
+Time zone adjustment on OpenFrame devices.
 
 =head1 FUNCTIONS
 
@@ -22,8 +22,8 @@ local appletManager = appletManager
 local jiveMain      = jiveMain
 local jnt           = jnt
 
-local squeezeos     = require((...):match("(.-)[^%.]+$") .. "openframe_bsp")
--- local squeezeos     = require("applets.OpenFrameTimeZone.openframe_bsp")
+local squeezeos     = require((...):match("(.-)[^%.]+$") .. "openframeos_bsp")
+-- local squeezeos     = require("applets.OpenFrameTimeZone.openframeos_bsp")
 -- local squeezeos     = require("squeezeos_bsp")
 
 local RequestHttp   = require("jive.net.RequestHttp")

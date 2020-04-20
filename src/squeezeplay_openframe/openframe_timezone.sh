@@ -49,7 +49,7 @@ elif [[ "$1" == "update" ]]; then
 
 else
 
-	echo "Usage: $0 <current> | <set> <timezone> | <update>"
+	echo "Usage: $0 <check> | <set> <timezone> | <update>"
 
 fi
 
