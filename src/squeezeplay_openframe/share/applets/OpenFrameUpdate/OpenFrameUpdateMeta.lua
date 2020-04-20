@@ -2,11 +2,11 @@
 --[[
 =head1 NAME
 
-applets.JogglerUpdate.JogglerUpdateMeta - JogglerUpdate Meta
+applets.OpenFrameUpdate.OpenFrameUpdateMeta - OpenFrameUpdate Meta
 
 =head1 DESCRIPTION
 
-See L<applets.JogglerUpdate.JogglerUpdateApplet>.
+See L<applets.OpenFrameUpdate.OpenFrameUpdateApplet>.
 
 =cut
 --]]
@@ -38,8 +38,8 @@ end
 
 function registerApplet(meta)
 	
-	--jiveMain:addItem(meta:menuItem('appletJogglerQuit', 'home', "TITLE", function(applet, ...) applet:menu(...) end, 10))
-	jiveMain:addItem(meta:menuItem('appletJogglerQuit', 'settings', "TITLE", function(applet, ...) applet:menu(...) end, 20))
+	jiveMain:addItem(meta:menuItem('appletOpenFrameUpdate', 'home', "TITLE", function(applet, ...) applet:menu(...) end, 10))
+	--jiveMain:addItem(meta:menuItem('appletOpenFrameUpdate', 'settings', "TITLE", function(applet, ...) applet:menu(...) end, 20))
 
 end
 
@@ -48,8 +48,8 @@ end
 
 =head1 LICENSE
 
-Created by Andy Davison
-birdslikewires.co.uk
+Created by Andrew Davison
+birdslikewires.net
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
 

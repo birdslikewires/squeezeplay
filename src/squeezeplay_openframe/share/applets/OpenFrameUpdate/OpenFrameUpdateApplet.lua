@@ -2,13 +2,13 @@
 --[[
 =head1 NAME
 
-applets.JogglerUpdates.JogglerUpdatesApplet
+applets.OpenFrameUpdates.OpenFrameUpdatesApplet
 
 =head1 DESCRIPTION
 
-JogglerUpdate v1.02 (10th May 2012)
+OpenFrameUpdate v1.03 (20th April 2020)
 
-This applet is used to update SqueezePlay on the O2 Joggler.
+This applet is used to update SqueezePlay on OpenFrame devices.
 
 =cut
 --]]
@@ -60,9 +60,9 @@ function menu(self, menuItem)
 
 	local window = Window("text_list", self:string("TITLE"))
 	
-	id = os.capture('sqp_JogglerUpdate.sh id')
-	verins = os.capture('sqp_JogglerUpdate.sh verins')
-	verchk = os.capture('sqp_JogglerUpdate.sh verchk')
+	id = os.capture('openframe_update.sh id')
+	verins = os.capture('openframe_update.sh verins')
+	verchk = os.capture('openframe_update.sh verchk')
 	
 	majverins = string.sub(verins,1,1)
 	minverins = string.sub(verins,2,3)
@@ -108,7 +108,7 @@ function menu(self, menuItem)
 	
 			local window = Window("text_list", self:string("NOMORE"))
 	
-			osver = os.capture('sqp_JogglerUpdate.sh oschk')
+			osver = os.capture('openframe_update.sh oschk')
 			majoschk = string.sub(osver,1,1)
 			minoschk = string.sub(osver,2,3)
 	
@@ -144,7 +144,7 @@ function menu(self, menuItem)
 		else
 		
 			-- Would be nice if this could be done via strings.txt for internationalisation, but it got cross.
-			veravail = "Version " .. majverchk .. "." .. minverchk .. " is now available. This Joggler is currently running v" .. majverins .. "." .. minverins .. "."
+			veravail = "Version " .. majverchk .. "." .. minverchk .. " is available. This OpenFrame is currently running v" .. majverins .. "." .. minverins .. "."
 			log:info(veravail)		
 		
 			headermsg = Textarea("help_text", veravail)
@@ -168,7 +168,7 @@ function menu(self, menuItem)
 							self:popupscreen('INSTALLINGUPDATE','REBOOTWARNING')
 							appletManager:callService("disconnectPlayer")
 							os.execute("xset -display :0.0 dpms 0 0 0")
-							os.execute("sqp_JogglerUpdate.sh update " .. verchk .. "&")
+							os.execute("openframe_update.sh update " .. verchk .. "&")
 						end
 					},
 				
@@ -221,7 +221,7 @@ end
 function changelog(self)
 	local window = Window("text_list", self:string("CHANGELOG"))
 	--window:setAllowScreensaver(false)
-	clog = os.capture("sqp_JogglerUpdate.sh clog " .. verins)
+	clog = os.capture("openframe_update.sh clog " .. verins)
 	local textarea = Textarea("text", clog)
 	window:addWidget(textarea)
 	self:tieAndShowWindow(window)
@@ -282,8 +282,8 @@ end
 
 =head1 LICENSE
 
-Created by Andy Davison
-birdslikewires.co.uk
+Created by Andrew Davison
+birdslikewires.net
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
 
