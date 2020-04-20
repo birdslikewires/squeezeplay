@@ -1,7 +1,7 @@
 --[[
 =head1 NAME
 
-applets.JogglerSetupTZ.JogglerSetupTZMeta
+applets.OpenFrameTimezone.OpenFrameTimezoneMeta
 
 =head1 DESCRIPTION
 
@@ -22,8 +22,8 @@ local appletManager = appletManager
 local jiveMain      = jiveMain
 local jnt           = jnt
 
-local squeezeos     = require((...):match("(.-)[^%.]+$") .. "joggleros_bsp")
--- local squeezeos     = require("applets.JogglerSetupTZ.joggleros_bsp")
+local squeezeos     = require((...):match("(.-)[^%.]+$") .. "openframe_bsp")
+-- local squeezeos     = require("applets.OpenFrameTimezone.openframe_bsp")
 -- local squeezeos     = require("squeezeos_bsp")
 
 local RequestHttp   = require("jive.net.RequestHttp")
@@ -37,8 +37,8 @@ function jiveVersion(meta)
 end
 
 function registerApplet(meta)
---	jiveMain:addItem(meta:menuItem('appletJogglerSetupTZ', 'home',             "TZ_TIMEZONE", function(applet, ...) applet:settingsShow(...) end))
-	jiveMain:addItem(meta:menuItem('appletJogglerSetupTZ', 'advancedSettings', "TZ_TIMEZONE", function(applet, ...) applet:settingsShow(...) end))
+--	jiveMain:addItem(meta:menuItem('appletOpenFrameTimezone', 'home',             "TZ_TIMEZONE", function(applet, ...) applet:settingsShow(...) end))
+	jiveMain:addItem(meta:menuItem('appletOpenFrameTimezone', 'advancedSettings', "TZ_TIMEZONE", function(applet, ...) applet:settingsShow(...) end))
 
 	-- At register time, subscribe to network events
 	-- if the timezone hasn't been set

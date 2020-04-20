@@ -1,7 +1,7 @@
 --[[
 =head1 NAME
 
-applets.JogglerSetupTZ.JogglerSetupTZApplet
+applets.OpenFrameTimezone.OpenFrameTimezoneApplet
 
 =head1 DESCRIPTION
 
@@ -20,8 +20,8 @@ local pairs = pairs
 local oo                     = require("loop.simple")
 local string                 = require("string")
 
-local squeezeos     = require((...):match("(.-)[^%.]+$") .. "joggleros_bsp")
---local squeezeos              = require("squeezeos_bsp")
+local squeezeos              = require((...):match("(.-)[^%.]+$") .. "openframe_bsp")
+--local squeezeos              = require("openframe_bsp")
 
 local Applet                 = require("jive.Applet")
 local System                 = require("jive.System")
