@@ -1,0 +1,33 @@
+#
+# The two letter codes are defined by ISO 639-1
+# http://en.wikipedia.org/wiki/List_of_ISO_639_codes
+
+TITLE
+	EN	Update
+
+CHANGELOG
+	EN	Changes
+
+INSTALLUPDATE
+	EN	Install Update
+	
+INSTALLINGUPDATE
+	EN	Installing Update...
+	
+REBOOTWARNING
+	EN	SqueezePlay will exit when complete.
+	
+NOAVAIL
+	EN	No updates are currently available.
+	
+NOMORE
+	EN	Updates Discontinued
+	
+NOMOREMSG
+	EN	Updated versions of SqueezePlay for OpenFrame require a newer revision of SqueezePlay OS than the one you are currently running. For details on how to upgrade, please visit:\n\nhttp://birdslikewires.co.uk/sqpos\n\nIn the meantime your installed version of SqueezePlay will continue to work as usual.
+	
+ERROR
+	EN	The update server was unavailable. Please try again later.\nIf the problem persists, please ensure that this device can connect to the internet.
+	
+RETURN
+	EN	Return to the Main Menu
