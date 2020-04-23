@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## builder-openframe.sh v1.03 (24th April 2020)
+## builder.sh v1.03 (24th April 2020)
 ##  Automating builds of SqueezePlay for OpenFrame.
 
 if [ "$(ls -di /)" == "2 /" ]; then

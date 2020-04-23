@@ -280,7 +280,8 @@ squeezeplay_openframe/Makefile:
 
 squeezeplay_openframe: squeezeplay_openframe/Makefile
 	cd squeezeplay_openframe; make install
-	cp squeezeplay_openframe/*.sh ${PREFIX}/bin/
+	cp squeezeplay_openframe/openframe_*.sh ${PREFIX}/bin/
+	cp squeezeplay_openframe/squeezeplay.sh ${PREFIX}/bin/
 	chmod +x ${PREFIX}/bin/*.sh
 
 squeezeplay_contrib: squeezeplay/Makefile
