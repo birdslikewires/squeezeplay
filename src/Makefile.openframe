@@ -111,14 +111,14 @@ sdl: SDL-1.2.15/Makefile
 
 # sdl_image (requires jpeg tiff png)
 SDL_image-1.2.7/Makefile:
-	cd SDL_image-1.2.7; SDL_CONFIG=${PREFIX}/bin/sdl-config ./configure --disable-tif  --host=${HOST} --target=${TARGET} ${ENABLE_PROFILING} --prefix=${PREFIX} ${LIBPNG} ${LIBJPEG}
+	cd SDL_image-1.2.7; ./autogen.sh; SDL_CONFIG=${PREFIX}/bin/sdl-config ./configure --disable-tif  --host=${HOST} --target=${TARGET} ${ENABLE_PROFILING} --prefix=${PREFIX} ${LIBPNG} ${LIBJPEG}
 
 sdl-image: SDL_image-1.2.7/Makefile
 	cd SDL_image-1.2.7; make && make install
 
 # sdl_ttf
 SDL_ttf-2.0.11/Makefile:
-	cd SDL_ttf-2.0.11; SDL_CONFIG=${PREFIX}/bin/sdl-config ./configure  ${ENABLE_PROFILING} --host=${HOST} --target=${TARGET} --prefix=${PREFIX} --with-freetype-prefix=${PREFIX} --without-opengl
+	cd SDL_ttf-2.0.11; ./autogen.sh; SDL_CONFIG=${PREFIX}/bin/sdl-config ./configure  ${ENABLE_PROFILING} --host=${HOST} --target=${TARGET} --prefix=${PREFIX} --with-freetype-prefix=${PREFIX}
 
 sdl-ttf: SDL_ttf-2.0.11/Makefile
 	cd SDL_ttf-2.0.11; make && make install
