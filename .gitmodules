@@ -4,3 +4,6 @@
 [submodule "src/zlib"]
 	path = src/zlib
 	url = https://github.com/birdslikewires/zlib
+[submodule "src/shairport-sync"]
+	path = src/shairport-sync
+	url = https://github.com/birdslikewires/shairport-sync
