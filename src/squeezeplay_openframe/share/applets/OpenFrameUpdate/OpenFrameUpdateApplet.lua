@@ -6,7 +6,7 @@ applets.OpenFrameUpdates.OpenFrameUpdatesApplet
 
 =head1 DESCRIPTION
 
-OpenFrameUpdate v1.03 (20th April 2020)
+OpenFrameUpdate v1.04 (26th April 2020)
 
 This applet is used to update SqueezePlay on OpenFrame devices.
 
@@ -60,9 +60,8 @@ function menu(self, menuItem)
 
 	local window = Window("text_list", self:string("TITLE"))
 	
-	id = os.capture('openframe_update.sh id')
-	verins = os.capture('openframe_update.sh verins')
-	verchk = os.capture('openframe_update.sh verchk')
+	verins = string.gsub(os.capture('/usr/bin/timeout 5 openframe_update.sh installed'), "\n", "")
+	verchk = string.gsub(os.capture('/usr/bin/timeout 5 openframe_update.sh check force'), "\n", "")
 	
 	majverins = string.sub(verins,1,1)
 	minverins = string.sub(verins,2,3)
@@ -73,7 +72,7 @@ function menu(self, menuItem)
 
 		log:info(verchk)
 
-		if verchk == "NOUPDATE" then
+		if verchk == "OK" then
 	
 			veravail = self:string("NOAVAIL")
 			headermsg = Textarea("help_text", veravail)
@@ -104,14 +103,10 @@ function menu(self, menuItem)
 			self:tieAndShowWindow(window)
 			return window
 	
-		elseif verchk == "NOMORE" then
+		elseif verchk == "NM" then
 	
 			local window = Window("text_list", self:string("NOMORE"))
-	
-			osver = os.capture('openframe_update.sh oschk')
-			majoschk = string.sub(osver,1,1)
-			minoschk = string.sub(osver,2,3)
-	
+		
 			veravail = self:string("NOMOREMSG")
 			headermsg = Textarea("help_text", veravail)
 			log:info(veravail)
@@ -144,7 +139,7 @@ function menu(self, menuItem)
 		else
 		
 			-- Would be nice if this could be done via strings.txt for internationalisation, but it got cross.
-			veravail = "Version " .. majverchk .. "." .. minverchk .. " is available. This OpenFrame is currently running v" .. majverins .. "." .. minverins .. "."
+			veravail = "Version " .. verchk .. " is available. This OpenFrame is currently running v" .. verins .. "."
 			log:info(veravail)		
 		
 			headermsg = Textarea("help_text", veravail)
@@ -168,7 +163,7 @@ function menu(self, menuItem)
 							self:popupscreen('INSTALLINGUPDATE','REBOOTWARNING')
 							appletManager:callService("disconnectPlayer")
 							os.execute("xset -display :0.0 dpms 0 0 0")
-							os.execute("openframe_update.sh update " .. verchk .. "&")
+							os.execute("openframe_update.sh update &")
 						end
 					},
 				
@@ -221,7 +216,7 @@ end
 function changelog(self)
 	local window = Window("text_list", self:string("CHANGELOG"))
 	--window:setAllowScreensaver(false)
-	clog = os.capture("openframe_update.sh clog " .. verins)
+	clog = os.capture("openframe_update.sh change " .. verins)
 	local textarea = Textarea("text", clog)
 	window:addWidget(textarea)
 	self:tieAndShowWindow(window)

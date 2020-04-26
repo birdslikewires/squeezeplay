@@ -314,6 +314,7 @@ squeezeplay-strip:
 squeezeplay-tgz: squeezeplay/Makefile
 	cp squeezeplay.revision ${BUILD_TOP}/share
 	cp squeezeplay.version ${BUILD_TOP}/share
+	cp squeezeplay_openframe/changelog.txt ${PREFIX}/share
 	cd squeezeplay; make squeezeplay-tgz
 
 #

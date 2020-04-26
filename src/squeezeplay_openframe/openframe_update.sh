@@ -1,108 +1,83 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-# sqp_JogglerUpdate.sh v1.14 (12th May 2014) by Andy Davison
-#  Called by the JogglerUpdate applet to check for and install updates, and return changelog.
-#  Also called by JogglerFeatures applet to check current version and installation medium.
-
-PLATFORM=`cat /tmp/sqp_platform`
-
-SERVER="http://birdslikewires.co.uk/download/joggler/squeezeplay"
+# openframe_update.sh v1.15 (26th April 2020) by Andrew Davison
+#  Called by the OpenFrameUpdate applet to check for and install updates and return changelog.
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]; then
 	echo "Usage: $0 <option>"
 	echo
-	echo "  clog <ver>:    Fetches the changelog, up to the currently installed version (ver)."
-	echo "  id:            Returns this Joggler's ID (the wlan0 mac address)."
-	echo "  oschk:         Returns the operating system version, if one is available."
-	echo "  osint          Returns 1 if operating system is on internal memory, else returns 0."
-	echo "  platform:      Returns the platform name."
-	echo "  update:        Installs the latest update."
-	echo "  verins:        Returns the version of SqueezePlay currently installed."
-	echo "  verchk:        Checks with sever and returns the latest version number or 'NOUPDATE' if none."
-	exit 0
+	echo "  installed:    :  Returns the version of SqueezePlay currently installed."
+	echo "  check         :  Returns the version of SqueezePlay currently available."
+	echo "  update        :  Installs the latest update."
+	echo "  change <ver>  :  Fetches the changelog, up to the currently installed version."
+	exit 1
 fi
 
-SPQVER=""
-if [ "$PLATFORM" = "native" ]; then
-	OSVER=`cat /etc/software.ver | awk '{print substr($1,1,5)}'`
-	INSTALL_DIR="/media/opt"
-	SUDO=""
-else
-	[ "$PLATFORM" = "sqpos" ] || OSVER=""
-	[ "$PLATFORM" = "sqpos" ] && OSVER=`cat /etc/sqpos.ver`
-	INSTALL_DIR="/opt"
-	SUDO="sudo"
-fi
+## Configurables
+SERVER="openbeak.net"
+SERVICE="/update/squeezeplay.php"
+##
 
-if [ "$1" = "platform" ]; then
-	echo -n $PLATFORM
-	exit 0
-fi
+# This script should live in the squeezeplay/bin directory.
+THISSCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 
-if [ "$1" = "oschk" ]; then
-	echo -n $OSVER
-	exit 0
-fi
+THISSCRIPTPATH="/opt/squeezeplay/bin"
 
-if [ "$1" = "osint" ]; then
-	OSINTERNAL=`cat /etc/fstab | grep " / " | grep -c "mmcblk0"`
-	[ $OSINTERNAL -eq 0 ] && echo "0"
-	[ $OSINTERNAL -gt 0 ] && echo "1"
-	exit 0
-fi
+# Get the currently installed version.
+VERIN=$(cat $THISSCRIPTPATH/../share/squeezeplay.version)
+REVIN=$(cat $THISSCRIPTPATH/../share/squeezeplay.revision)
+[[ "$1" == "installed" ]] && echo "$VERIN-$REVIN" && exit 0
 
 
-jogglerid() {
-	ID=""
-	if [ "$PLATFORM" = "native" ]; then
-		[ "$ID" = "" ] && ID=`ifconfig | grep ra0 | awk -F\HWaddr\  {'print $2'} | tr -d ' '  | tr "[:lower:]" "[:upper:]"`
-	else
-		[ "$ID" = "" ] && ID=`/bin/grep wlan0 /etc/udev/rules.d/70-persistent-net.rules 2>/dev/null | awk -F\address}==\" {'print $2'} | awk -F\" {'print $1'} | tr "[:lower:]" "[:upper:]"`
-		[ "$ID" = "" ] && ID=`ifconfig | grep wlan | head -1 | awk -F\HWaddr\  {'print $2'} | tr -d ' ' | tr "[:lower:]" "[:upper:]"`
-		[ "$ID" = "" ] && ID=`ifconfig | grep eth | head -1 | awk -F\HWaddr\  {'print $2'} | tr -d ' ' | tr "[:lower:]" "[:upper:]"`
-	fi
-	[ "$ID" = "" ] && ID="DE:AD:BE:EF:CA:FE"
+updateCheck() {
+
+	# Build our user agent and request.
+	UPANDLOAD="$(awk -F. {'print $1'} /proc/uptime)"/"$(awk '{$NF=""; print $0}' /proc/loadavg | awk '{$1=$1};1' | sed -e 's/\//-/g' -e 's/ /\//g')"
+	USER_AGENT="$(cat /tmp/openframe.uid)"/"$(cat /tmp/openframe.net)"/"$(cat /tmp/openframe.nfo)"/"$(cat /tmp/openframe.ver)"/"$UPANDLOAD"
+	[[ "${1}" == "force" ]] && REVIN="0000"
+
+	# Before we send anything, test the validity of the URL with a plain curl request.
+	TEST_RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" https://$SERVER$SERVICE)
+	[[ "$TEST_RESPONSE" == "200" ]] && SERVICE_RESPONSE=$(/usr/bin/curl -fsSA "$USER_AGENT" "https://$SERVER$SERVICE?ver=$VERIN-$REVIN" 2>&1) || SERVICE_RESPONSE="$TEST_RESPONSE"
+
 }
 
 
-## Basic requests first.
-
-# Get the Joggler ID (wireless mac address).
-jogglerid
-[ "$1" = "id" ] && echo -n $ID
-
-# Get the currently installed version of SqueezePlay for Joggler...
-VERINS=`/bin/sed -n 1p $INSTALL_DIR/squeezeplay/version | tr  -d \'\n\'`
-[ "$1" = "verins" ] && echo -n $VERINS
-
-# ...and the currently installed SqueezePlay binaries themselves.
-SQPINS=`/bin/sed -n 2p $INSTALL_DIR/squeezeplay/version | tr  -d \'\n\'`
-
-# Check whether there are any newer versions.
-if [ "$1" = "verchk" ]; then
-	if [ -f /etc/sqpbeta ]; then
-		VERCHK=`/usr/bin/wget -qO- "$SERVER/update.php?sys=$PLATFORM$OSVER&cli=applet&bin=$SQPINS&ver=$VERINS&id=$ID&beta=1"`
+if [[ "$1" == "check" ]]; then
+	updateCheck "$2"
+	if [[ "${SERVICE_RESPONSE:0:8}" == "https://" ]]; then
+		VERUP=$(echo ${SERVICE_RESPONSE##*/} | awk -F'squeezeplay-' {'print $2'} | awk -F'.tgz' {'print $1'})
+		echo $VERUP
 	else
-		VERCHK=`/usr/bin/wget -qO- "$SERVER/update.php?sys=$PLATFORM$OSVER&cli=applet&bin=$SQPINS&ver=$VERINS&id=$ID"`
-	fi
-	echo -n $VERCHK
-fi
-
-# Output the changelog.
-if [ "$1" = "clog" ]; then
-	CLOG=`/usr/bin/wget -qO- "$SERVER/update.php?clog=$2"`
-	echo "$CLOG"
+		echo "$SERVICE_RESPONSE"
+	fi 
+	exit 0
 fi
 
 
-## Now for the update section, which is also pretty basic, really. Just have to get the installer script right.
+if [[ "$1" == "update" ]]; then
+	updateCheck "$2"
+	if [[ "${SERVICE_RESPONSE:0:8}" == "https://" ]]; then
 
-if [ $1 = "update" ]; then
-	
-	$SUDO wget -qO $INSTALL_DIR/sqpinstall.sh $SERVER/sqpinstall.sh
-	$SUDO chmod +x $INSTALL_DIR/sqpinstall.sh
-	$SUDO $INSTALL_DIR/sqpinstall.sh applet > ~/.squeezeplay/update.log
-	
+		VERUP=$(echo ${SERVICE_RESPONSE##*/} | awk -F'squeezeplay-' {'print $2'})
+		wget -qP /tmp "$SERVICE_RESPONSE"
+		# STICK A BASIC HASH CHECK IN HERE FOR GOODNESS SAKE!
+		rm -rf /opt/squeezeplay/*
+		tar -C /opt/squeezeplay -zxvf /tmp/squeezeplay-$VERUP
+		#sudo -u squeezeplay tar -C /opt/squeezeplay -zxf /tmp/squeezeplay-$VERUP
+		sync
+
+	else
+
+		# We're in the update loop on SqueezePlay now, so just reboot the thing.
+		echo "$SERVICE_RESPONSE"
+		sleep 3
+		sudo reboot
+
+	fi 
+
+	exit 0
+
 fi
 
 exit 0

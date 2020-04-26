@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-## squeezeplay.sh v2.03 (20th April 2020)
+## squeezeplay.sh v2.04 (24th April 2020)
 ##  Identifies which OpenFrame device we're running on and applies some tweaks.
 
 [ -f /etc/lsb-release ] && source /etc/lsb-release
 
-## Change this if you changed your install path
+## Configurables
 INSTALL_DIR=/opt/squeezeplay
+PLTFM_CHECK=1
 ##
 
 LIB_DIR=$INSTALL_DIR/lib
@@ -23,6 +24,20 @@ export SDL_AUDIODRIVER=alsa
 export SDL_VIDEO_WINDOW_POS=0,0
 export SDL_VIDEO_ALLOW_SCREENSAVER=1
 export KMP_DUPLICATE_LIB_OK=TRUE
+
+## Wait for the OpenFrame to finish startup.
+if [ $PLTFM_CHECK -gt 0 ]; then
+
+	WAITING=0
+	while [ ! -f /tmp/openframe.net ] || [ ! -f /tmp/openframe.nfo ] || [ ! -f /tmp/openframe.uid ] || [ ! -f /tmp/openframe.ver ]; do
+		[ $WAITING -eq 0 ] && echo -n "Waiting for OpenFrame to initialise..."
+		[ $WAITING -eq 60 ] && echo " giving up." && exit 1
+		((WAITING++))
+		sleep 1
+	done
+	echo
+
+fi
 
 if [ -e /tmp/openframe.ver ]; then
 
