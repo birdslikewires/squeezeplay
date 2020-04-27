@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# openframe_update.sh v1.15 (26th April 2020) by Andrew Davison
+# openframe_update.sh v1.16 (27th April 2020) by Andrew Davison
 #  Called by the OpenFrameUpdate applet to check for and install updates and return changelog.
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]; then
@@ -60,23 +60,36 @@ if [[ "$1" == "update" ]]; then
 	if [[ "${SERVICE_RESPONSE:0:8}" == "https://" ]]; then
 
 		VERUP=$(echo ${SERVICE_RESPONSE##*/} | awk -F'squeezeplay-' {'print $2'})
+
 		wget -qP /tmp "$SERVICE_RESPONSE"
-		# STICK A BASIC HASH CHECK IN HERE FOR GOODNESS SAKE!
-		rm -rf /opt/squeezeplay/*
-		tar -C /opt/squeezeplay -zxvf /tmp/squeezeplay-$VERUP
-		#sudo -u squeezeplay tar -C /opt/squeezeplay -zxf /tmp/squeezeplay-$VERUP
-		sync
+		wget -qP /tmp "$SERVICE_RESPONSE.md5"
+
+		TGZHASH=$(cat /tmp/squeezeplay-$VERUP.md5 | awk -F' ' {'print $1'})
+		OURHASH=$(md5sum /tmp/squeezeplay-$VERUP | awk -F' ' {'print $1'})
+
+		if [[ "$OURHASH" != "$TGZHASH" ]]; then
+
+			echo "Checksum mismatch. Bailing!"
+
+		else
+
+			[[ "$USER" == "squeezeplay" ]] && SUDOSQP="" || SUDOSQP="sudo -u squeezeplay"
+			$SUDOSQP rm -rf /opt/squeezeplay/*
+			$SUDOSQP tar -C /opt/squeezeplay -zxf /tmp/squeezeplay-$VERUP
+			rm /tmp/squeezeplay-*.tgz*
+			sync
+
+		fi
 
 	else
 
 		# We're in the update loop on SqueezePlay now, so just reboot the thing.
 		echo "$SERVICE_RESPONSE"
 		sleep 3
-		sudo reboot
 
 	fi 
 
-	exit 0
+	[[ "$USER" == "squeezeplay" ]] && sudo reboot
 
 fi
 
