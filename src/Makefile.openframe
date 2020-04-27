@@ -282,6 +282,10 @@ squeezeplay_openframe: squeezeplay_openframe/Makefile
 	cd squeezeplay_openframe; make install
 	cp squeezeplay_openframe/openframe_*.sh ${PREFIX}/bin/
 	cp squeezeplay_openframe/squeezeplay.sh ${PREFIX}/bin/
+	cp squeezeplay.revision ${BUILD_TOP}/share
+	cp squeezeplay.version ${BUILD_TOP}/share
+	cp squeezeplay_openframe/changelog.txt ${PREFIX}/share
+	cp squeezeplay_openframe/squeezeplay.service ${PREFIX}/share
 	chmod +x ${PREFIX}/bin/*.sh
 
 squeezeplay_contrib: squeezeplay/Makefile
@@ -312,9 +316,6 @@ squeezeplay-strip:
 # This builds the .tarball. It's called by 'all' so no need to run it manually
 # 
 squeezeplay-tgz: squeezeplay/Makefile
-	cp squeezeplay.revision ${BUILD_TOP}/share
-	cp squeezeplay.version ${BUILD_TOP}/share
-	cp squeezeplay_openframe/changelog.txt ${PREFIX}/share
 	cd squeezeplay; make squeezeplay-tgz
 
 #

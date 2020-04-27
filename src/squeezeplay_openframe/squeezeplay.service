@@ -1,0 +1,10 @@
+[Unit]
+Description=SqueezePlay
+
+[Service]
+User=squeezeplay
+ExecStart=/opt/squeezeplay/bin/squeezeplay.sh
+StandardOutput=syslog
+
+[Install]
+WantedBy=graphical.target
