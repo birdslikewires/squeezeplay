@@ -137,8 +137,8 @@ SqueezePlay_dmg: SqueezePlay_bundle
 	-rm $(DMG_TMP_IMAGE_FILENAME)
 	cp -p $(DMG_IMAGE_FILENAME) $(OSX_BUILD_DIR)/SqueezePlay-$(VERSION_TEXT).dmg
 
-squeezeplay-tgz: 
-	cd $(prefix); tar -zcf ../squeezeplay-$(TGZ_VERSION_TEXT).tgz *; tar -ztvf ../squeezeplay-$(TGZ_VERSION_TEXT).tgz
+squeezeplay-tgz:
+	cd $(prefix); tar -zcf ../squeezeplay-$(TGZ_VERSION_TEXT).tgz *; tar -ztvf ../squeezeplay-$(TGZ_VERSION_TEXT).tgz; md5sum ../squeezeplay-$(TGZ_VERSION_TEXT).tgz > ../squeezeplay-$(TGZ_VERSION_TEXT).tgz.md5
 
 squeezeplay-deb:
 	sed -e 's/_VERSION_/$(DEB_VERSION_TEXT)/g' ../platforms/debian/changelog.in > ../platforms/debian/changelog
