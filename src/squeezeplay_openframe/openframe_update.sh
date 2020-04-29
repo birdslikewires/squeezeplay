@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# openframe_update.sh v1.16 (27th April 2020) by Andrew Davison
+# openframe_update.sh v1.17 (29th April 2020) by Andrew Davison
 #  Called by the OpenFrameUpdate applet to check for and install updates and return changelog.
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]; then
@@ -87,7 +87,7 @@ if [[ "$1" == "update" ]]; then
 
 	fi 
 
-	[[ "$USER" == "squeezeplay" ]] && sudo reboot
+	[[ "$USER" == "squeezeplay" ]] && systemctl reboot -i
 
 fi
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# openframe_power v1.10 (31st March 2020) by Andrew Davison
+# openframe_power v1.11 (29th April 2020) by Andrew Davison
 #  Executed by OpenFramePower applet.
 
 if [ "$1" = "quit" ]; then
@@ -20,14 +20,14 @@ fi
 if [ "$1" = "reboot" ]; then
 		
 	sleep 2
-	sudo /sbin/reboot
+	systemctl reboot -i
 
 fi
 
 if [ "$1" = "halt" ] || [ "$1" = "poweroff" ]; then
 
 	sleep 2
-	sudo /sbin/poweroff
+	systemctl poweroff -i
 
 fi
 
