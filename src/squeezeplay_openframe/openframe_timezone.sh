@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# openframe_timezone v1.01 (20th April 2020) by Andrew Davison
+# openframe_timezone v1.02 (29th April 2020) by Andrew Davison
 #  Executed by OpenFrameTimeZone applet.
+#  Suspiciously similar to of-timezone.
 
 
 ## Change this to use an alternative time zone server.
@@ -18,7 +19,7 @@ if [[ "$1" == "check" ]]; then
 
 elif [[ "$1" == "set" ]]; then
 
-	sudo /usr/bin/timedatectl set-timezone "$2"
+	/usr/bin/timedatectl set-timezone "$2"
 	RESULT=$(timedatectl status | grep "Time zone" | awk -F\  {'print $3'})
 	echo $RESULT
 	[[ "$RESULT" == "$1" ]] && exit 0 || exit 1
@@ -35,12 +36,12 @@ elif [[ "$1" == "update" ]]; then
 		SYS_TYP="///$(hostname)////$(uname -r)/squeezeplay-$(cat $THISSCRIPTPATH/../share/squeezeplay.version)-$(cat $THISSCRIPTPATH/../share/squeezeplay.revision)"
 	fi
 
-	TIMEZONE=$(curl -sA "$SYS_TYP" -m 2 "https://$SERVER/$SERVICE")
+	TIMEZONE=$(timeout 10 curl -sA "$SYS_TYP" -m 2 "https://$SERVER/$SERVICE")
 	TIMEZONEVALID=$(echo $TIMEZONE | grep -c '/')
 
 	if [[ "$TIMEZONE" != "" ]] && [[ "${#TIMEZONE}" -ge 6 ]] && [[ "${#TIMEZONE}" -le 32 ]] && [[ "$TIMEZONEVALID" -le 2 ]]; then
 
-		sudo /usr/bin/timedatectl set-timezone "$TIMEZONE"
+		/usr/bin/timedatectl set-timezone "$TIMEZONE"
 		RESULT=$(timedatectl status | grep "Time zone" | awk -F\  {'print $3'})
 		echo $RESULT
 		[[ "$RESULT" == "$TIMEZONE" ]] && exit 0 || exit 1

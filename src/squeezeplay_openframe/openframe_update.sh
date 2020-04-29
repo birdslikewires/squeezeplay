@@ -21,8 +21,6 @@ SERVICE="/update/squeezeplay.php"
 # This script should live in the squeezeplay/bin directory.
 THISSCRIPTPATH="$(cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)"
 
-THISSCRIPTPATH="/opt/squeezeplay/bin"
-
 # Get the currently installed version.
 VERIN=$(cat $THISSCRIPTPATH/../share/squeezeplay.version)
 REVIN=$(cat $THISSCRIPTPATH/../share/squeezeplay.revision)

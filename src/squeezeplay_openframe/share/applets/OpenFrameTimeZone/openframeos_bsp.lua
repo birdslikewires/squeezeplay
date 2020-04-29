@@ -1,7 +1,7 @@
 --[[
 =head1 NAME
 
-applets.JogglerSetupTZ.openframeos_bsp
+applets.OpenFrameTimeZone.openframeos_bsp
 
 =head1 DESCRIPTION
 
