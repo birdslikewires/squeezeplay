@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## builder.sh v1.04 (24th April 2020)
+## builder.sh v1.05 (29th April 2020)
 ##  Automating builds of SqueezePlay for OpenFrame.
 
 if [ "$(ls -di /)" == "2 /" ]; then
@@ -39,7 +39,7 @@ elif [ ! -d $SQPGITLOC/squeezeplay/build ]; then
 
 elif [ -d $SQPGITLOC/squeezeplay/build ]; then
 
-	HIGHESTBUILD=$(ls -1 $SQPGITLOC/squeezeplay/build/squeezeplay-*.tgz | tail -1 | awk -F'-' {'print $3'} | awk -F'.' {'print $1'})
+	HIGHESTBUILD=$(ls -1 $SQPGITLOC/squeezeplay/build/squeezeplay-*.tgz 2>/dev/null | tail -1 | awk -F'-' {'print $3'} | awk -F'.' {'print $1'})
 
 	if [[ $HIGHESTBUILD -lt $LATESTREVISION ]]; then
 
