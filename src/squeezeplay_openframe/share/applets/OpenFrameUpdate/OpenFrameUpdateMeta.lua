@@ -38,8 +38,8 @@ end
 
 function registerApplet(meta)
 	
-	jiveMain:addItem(meta:menuItem('appletOpenFrameUpdate', 'home', "TITLE", function(applet, ...) applet:menu(...) end, 10))
-	--jiveMain:addItem(meta:menuItem('appletOpenFrameUpdate', 'settings', "TITLE", function(applet, ...) applet:menu(...) end, 20))
+	--jiveMain:addItem(meta:menuItem('appletOpenFrameUpdate', 'home', "TITLE", function(applet, ...) applet:menu(...) end, 10))
+	jiveMain:addItem(meta:menuItem('appletOpenFrameUpdate', 'settings', "TITLE", function(applet, ...) applet:menu(...) end, 20))
 
 end
 

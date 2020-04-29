@@ -6,7 +6,7 @@ applets.OpenFrameUpdates.OpenFrameUpdatesApplet
 
 =head1 DESCRIPTION
 
-OpenFrameUpdate v1.04 (26th April 2020)
+OpenFrameUpdate v1.05 (29th April 2020)
 
 This applet is used to update SqueezePlay on OpenFrame devices.
 
@@ -61,8 +61,9 @@ function menu(self, menuItem)
 	local window = Window("text_list", self:string("TITLE"))
 	
 	verins = string.gsub(os.capture('/usr/bin/timeout 5 openframe_update.sh installed'), "\n", "")
-	verchk = string.gsub(os.capture('/usr/bin/timeout 5 openframe_update.sh check force'), "\n", "")
-	
+	--verchk = string.gsub(os.capture('/usr/bin/timeout 5 openframe_update.sh check force'), "\n", "")
+	verchk = string.gsub(os.capture('/usr/bin/timeout 5 openframe_update.sh check'), "\n", "")
+
 	majverins = string.sub(verins,1,1)
 	minverins = string.sub(verins,2,3)
 	majverchk = string.sub(verchk,1,1)

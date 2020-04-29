@@ -1,0 +1,19 @@
+
+Squeezeplay for OpenFrame                                                                   birdslikewires.net
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Feel like contributing to SqueezePlay for OpenFrame's hosting and development?
+
+You can!                                                                                         birdslikewires.net/about
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+For a complete history, please review the commits on: github.com/birdslikewires/squeezeplay
+
+7.8.1-1000 (29th April 2020)
+Revisiting this project after a mere six year interlude.
+Now based upon the revision maintained by Ralph Irving: github.com/ralph-irving/squeezeplay
+Created new build structure for OpenFrame devices within codebase. No more overlays.
+Imported and refactored all of the relevant scripts and applets.
+Merged JogglerSkin with WVGAsmallSkin from the original v7.7 project.
+
+This release relies upon the 'Linux for OpenFrame Devices' project: github.com/birdslikewires/openframe-linux

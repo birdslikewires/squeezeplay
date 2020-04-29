@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# openframe_update.sh v1.17 (29th April 2020) by Andrew Davison
+# openframe_update.sh v1.18 (29th April 2020) by Andrew Davison
 #  Called by the OpenFrameUpdate applet to check for and install updates and return changelog.
 
 if [ $# -eq 0 ] || [ $# -gt 2 ]; then
@@ -58,9 +58,9 @@ if [[ "$1" == "update" ]]; then
 	if [[ "${SERVICE_RESPONSE:0:8}" == "https://" ]]; then
 
 		VERUP=$(echo ${SERVICE_RESPONSE##*/} | awk -F'squeezeplay-' {'print $2'})
-
-		wget -qP /tmp "$SERVICE_RESPONSE"
-		wget -qP /tmp "$SERVICE_RESPONSE.md5"
+		echo
+		wget -P /tmp "$SERVICE_RESPONSE"
+		wget -P /tmp "$SERVICE_RESPONSE.md5"
 
 		TGZHASH=$(cat /tmp/squeezeplay-$VERUP.md5 | awk -F' ' {'print $1'})
 		OURHASH=$(md5sum /tmp/squeezeplay-$VERUP | awk -F' ' {'print $1'})
@@ -72,8 +72,8 @@ if [[ "$1" == "update" ]]; then
 		else
 
 			[[ "$USER" == "squeezeplay" ]] && SUDOSQP="" || SUDOSQP="sudo -u squeezeplay"
-			$SUDOSQP rm -rf /opt/squeezeplay/*
-			$SUDOSQP tar -C /opt/squeezeplay -zxf /tmp/squeezeplay-$VERUP
+			$SUDOSQP rm -rvf /opt/squeezeplay/*
+			$SUDOSQP tar -C /opt/squeezeplay -zxvf /tmp/squeezeplay-$VERUP
 			rm /tmp/squeezeplay-*.tgz*
 			sync
 
