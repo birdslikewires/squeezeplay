@@ -194,15 +194,8 @@ tolua++: lua
 # squeezeplay
 #
 
-.PHONY: app portaudio fdkaac libogg flac libmad tremor squeezeplay squeezeplay_openframe squeezeplay_contrib squeezeplay_private freefont freefont-debian axtls rtmp
-app: portaudio fdkaac libogg flac libmad tremor ${SPPRIVATE_TARGETS} squeezeplay squeezeplay_openframe squeezeplay_contrib freefont rtmp squeezeplay-strip squeezeplay-tgz 
-
-# portaudio
-portaudio/Makefile:
-	cd portaudio; ./configure --host=${HOST} --target=${TARGET} --prefix=${PREFIX} --with-jack=no --enable-shared=no
-
-portaudio: portaudio/Makefile
-	cd portaudio; make && make install
+.PHONY: app fdkaac libogg flac libmad tremor squeezeplay squeezeplay_openframe squeezeplay_contrib squeezeplay_private freefont freefont-debian axtls rtmp
+app: fdkaac libogg flac libmad tremor ${SPPRIVATE_TARGETS} squeezeplay squeezeplay_openframe squeezeplay_contrib freefont rtmp squeezeplay-strip squeezeplay-tgz 
 
 # fdkaac
 fdk-aac-2.0.1/Makefile:
@@ -308,7 +301,7 @@ squeezeplay-strip:
 	rm -rvf ${BUILD_TOP}/share/jive/applets/Bounce
 	rm -rvf ${BUILD_TOP}/share/jive/applets/FullscreenSkin
 	rm -rvf ${BUILD_TOP}/share/jive/applets/QVGA*
-	#rm -rvf ${BUILD_TOP}/share/jive/applets/Test*
+	rm -rvf ${BUILD_TOP}/share/jive/applets/Test*
 	rm -rvf ${BUILD_TOP}/share/jive/applets/WQVGA*
 	rm -rvf ${BUILD_TOP}/share/jive/applets/Quit
 
@@ -361,7 +354,6 @@ clean:
 	-cd luamd5; make MYNAME=sha1 clean
 	-cd luamd5; make MYNAME=md5 clean
 	-cd tolua++-1.0.92; scons -c; rm .sconsign.dblite; rm src/lib/libtolua++.so
-	-cd portaudio; make distclean; rmdir src/os/mac_osx
 	-cd fdk-aac-2.0.1; make distclean
 	-cd libogg-1.3.4; make distclean
 	-cd Tremor; make distclean

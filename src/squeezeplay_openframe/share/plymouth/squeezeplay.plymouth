@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=SqueezePlay
+Description=SqueezePlay Boot Screen
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/squeezeplay
+ScriptFile=/usr/share/plymouth/themes/squeezeplay/squeezeplay.script
