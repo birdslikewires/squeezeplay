@@ -278,6 +278,7 @@ squeezeplay_openframe: squeezeplay_openframe/Makefile
 	cp squeezeplay.revision ${BUILD_TOP}/share
 	cp squeezeplay.version ${BUILD_TOP}/share
 	cp squeezeplay_openframe/changelog.txt ${PREFIX}/share
+	cp -R squeezeplay_openframe/share/plymouth ${PREFIX}/share
 	chmod +x ${PREFIX}/bin/*.sh
 
 squeezeplay_contrib: squeezeplay/Makefile
