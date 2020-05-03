@@ -60,7 +60,7 @@ function menu(self, menuItem)
 		
 	menu = SimpleMenu("menu", {
 
-		{
+	--[[	{
 			text = self:string("QUIT"),
 			style = 'item_choice',
 			sound = "WINDOWSHOW",
@@ -69,7 +69,7 @@ function menu(self, menuItem)
 				os.execute('openframe_power.sh quit')
 				Framework:quit()
 			end
-		},
+		}, ]]--
 	
 		{
 			text = self:string("REBOOT"),
