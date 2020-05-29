@@ -217,7 +217,7 @@ end
 function changelog(self)
 	local window = Window("text_list", self:string("CHANGELOG"))
 	--window:setAllowScreensaver(false)
-	clog = os.capture("openframe_update.sh change " .. verins)
+	clog = os.capture("openframe_update.sh log force")
 	local textarea = Textarea("text", clog)
 	window:addWidget(textarea)
 	self:tieAndShowWindow(window)
