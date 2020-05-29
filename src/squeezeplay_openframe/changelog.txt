@@ -9,6 +9,10 @@ You can!                                                                        
 
 For a complete history, please review the commits on: github.com/birdslikewires/squeezeplay
 
+7.8.1-1001 (29th May 2020)
+Adds json module alongside cjson for third-party locally-installed applets which we can't modify.
+Improves robustness of DNS resolution by sanitising hostnames were necessary.
+
 7.8.1-1000 (29th April 2020)
 Revisiting this project after a mere six year interlude.
 Now based upon the revision maintained by Ralph Irving: github.com/ralph-irving/squeezeplay
