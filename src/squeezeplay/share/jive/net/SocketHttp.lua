@@ -226,7 +226,15 @@ function t_sendResolve(self)
 	end
 
 	local t = Task(tostring(self) .. "(D)", self, function()
-		log:debug(self, " DNS loopup for ", self.host)
+
+		-- deal with hostnames sent with protocols 
+		if self.host:find("://") then
+			log:warn(self, " Stripping protocol found in hostname! : ", self.host)
+			self.proto,self.host = self.host:match("(.+)://(.+)")
+		end
+
+		log:debug(self, " DNS lookup for ", self.host)
+
 		local ip, err = DNS:toip(self.host)
 
 		-- make sure the socket has not closed while
