@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-# openframe_power v1.11 (29th April 2020) by Andrew Davison
+# openframe_power v1.12 (29th May 2020) by Andrew Davison
 #  Executed by OpenFramePower applet.
 
 if [ "$1" = "quit" ]; then
 
 	/usr/bin/xset -display :0.0 dpms 0 0 0
-	[ -e /tmp/of_initial_bl ] && /usr/local/sbin/of-backlight `cat /tmp/of_initial_bl` &
 
 fi
 

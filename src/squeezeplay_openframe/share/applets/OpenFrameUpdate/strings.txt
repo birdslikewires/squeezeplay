@@ -12,10 +12,10 @@ INSTALLUPDATE
 	EN	Install Update
 	
 INSTALLINGUPDATE
-	EN	Installing Update...
+	EN	Installing Update
 	
 REBOOTWARNING
-	EN	SqueezePlay will exit when complete.
+	EN	The system will reboot automatically...
 	
 NOAVAIL
 	EN	No updates are currently available.

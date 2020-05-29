@@ -40,7 +40,6 @@ end
 
 function registerApplet(meta)
 
-	os.execute("of-backlight 888")
 	jiveMain:addItem(meta:menuItem('appletOpenFrameBacklight', 'screenSettings', "BACKLIGHT", function(applet, ...) applet:backlightSetting(...) end, nil, nil, "hm_settingsBrightness"))
 	os.execute("[ ! -f $HOME/.squeezeplay/userpath/settings/OpenFrameBacklight.lua ] || of-backlight `cat $HOME/.squeezeplay/userpath/settings/OpenFrameBacklight.lua | awk -F\= {'print $3'} | awk -F\, {'print $1'}` &")
 		
