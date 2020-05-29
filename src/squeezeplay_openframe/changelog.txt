@@ -9,6 +9,9 @@ You can!                                                                        
 
 For a complete history, please review the commits on: github.com/birdslikewires/squeezeplay
 
+7.8.1-1002 (29th May 2020)
+Fixed display of the changelog in OpenFrameUpdate applet.
+
 7.8.1-1001 (29th May 2020)
 Adds json module alongside cjson for third-party locally-installed applets which we can't modify.
 Improves robustness of DNS resolution by sanitising hostnames were necessary.
@@ -21,4 +24,4 @@ Created new build structure for OpenFrame devices within codebase. No more overl
 Imported and refactored all of the relevant scripts and applets.
 Merged JogglerSkin with WVGAsmallSkin from the original v7.7 project.
 
-This release relies upon the 'Linux for OpenFrame Devices' project: github.com/birdslikewires/openframe-linux
+This release relies upon the 'Linux for OpenFrame' project: github.com/birdslikewires/openframe-linux
